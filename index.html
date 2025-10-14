@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE K ASIANA - The Final Masterpiece</title>
+    
+    <!-- SEO & SNS Meta Tags -->
+    <meta name="description" content="THE K ASIANA - 고객의 성공을 최우선으로 생각하며, 정직과 나눔의 가치를 실현하는 초일류 기업">
+    <meta property="og:title" content="THE K ASIANA">
+    <meta property="og:description" content="고객의 성공을 최우선으로, 정직과 나눔의 가치를 실현하는 기업">
+    <meta property="og:image" content="./images/og-image.png">
+    <meta property="og:url" content="http://lucky7-2.store/">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 기본 스타일 및 변수 --- */
+        :root { --main-purple: #6a5acd; --dark-blue: #0a1428; --orbit-color: rgba(106, 90, 205, 0.5); --light-purple: #f0f0ff; --dark-gray: #333; --light-gray: #f8f9fa; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Pretendard', 'Noto Sans KR', sans-serif; color: #333; background-color: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; position: relative; }
+        body.no-scroll { overflow: hidden; position: fixed; width: 100%; }
+        ul, li { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* --- 레이아웃 & 헬퍼 --- */
+        .section { width: 100%; position: relative; padding: 120px 40px; overflow: hidden; }
+        .section-dark { background-color: var(--dark-blue); color: #fff; }
+        .section-light { background-color: #f8f9fa; }
+        .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+        .section-title { text-align: center; margin-bottom: 80px; }
+        .section-title h2 { font-size: 42px; font-weight: 700; }
+        .section-dark .section-title p { color: #8892b0; }
+        .section-light .section-title h2 { color: #222; }
+
+        /* --- 애니메이션 --- */
+        .animate-on-scroll { opacity: 0; transition: opacity 1s ease-out, transform 1s ease-out; }
+        .from-left { transform: translateX(-50px); }
+        .from-right { transform: translateX(50px); }
+        .from-bottom { transform: translateY(50px); }
+        .is-visible { opacity: 1; transform: translate(0, 0) !important; }
+
+        /* --- 헤더 & 네비게이션 --- */
+        .main-header { width: 100%; background-color: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.2); position: fixed; top: 0; left: 0; z-index: 1000; transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
+        .main-header.scrolled { background-color: #fff; border-bottom: 1px solid #e0e0e0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .main-header.scrolled .main-nav-list a { color: #222; }
+        .main-header.scrolled .login-btn { color: #fff; background-color: var(--main-purple); }
+        .main-header.scrolled .login-btn:hover { background-color: #5545b3; }
+        .main-header.scrolled .hamburger-btn span { background-color: #222; }
+        .header-container { max-width: 1320px; margin: 0 auto; padding: 0 40px; height: 90px; display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 40px; display: block; }
+        .nav-area { display: flex; align-items: center; gap: 40px; }
+        .main-nav-list { display: flex; gap: 60px; }
+        .main-nav-list a { display: block; font-size: 18px; font-weight: 500; color: #fff; padding: 10px 0; position: relative; transition: color 0.3s ease; }
+        .login-btn, .start-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 1px solid var(--main-purple);
+            border-radius: 50px;
+            color: #fff;
+            background-color: transparent;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .login-btn:hover, .start-btn:hover { background-color: var(--main-purple); color: #fff; }
+        .main-nav .start-btn-mobile { display: none; }
+        .main-nav-logo { display: none; }
+        .hamburger-btn { display: none; }
+
+        /* ================= PART 1 STYLES ================= */
+        .hero-section { height: 60vh; background-image: url('./images/hero_bg.png'); background-repeat: no-repeat; background-position: center center; background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero-section .hero-content { position: relative; z-index: 2; text-align: center; }
+        .hero-section .start-btn { 
+            margin-top: 25px; 
+            border: none; 
+            padding: 12px 40px; /* 좌우 너비 확장 */
+            border-radius: 50px; /* 곡선 수정 */
+            font-size: 18px;
+            background-color: rgba(106, 90, 205, 0.8); 
+        }
+        .hero-section .start-btn:hover { background-color: #fff; color: var(--main-purple); }
+        .hero-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(10, 20, 40, 0.5); z-index: 1; }
+        .hero-logo { opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.5s forwards; }
+        .hero-logo img { max-width: 320px; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        .about-content { display: flex; align-items: center; gap: 80px; }
+        .about-image { flex: 1; min-width: 320px; }
+        .about-text { flex: 1; min-width: 320px; }
+        .about-image img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+        .about-text h2 { font-size: 36px; font-weight: 700; color: #222; }
+        .about-text .subtitle { font-size: 24px; font-weight: 500; color: #555; margin-top: 5px; margin-bottom: 30px; }
+        .particle-banner { position: relative; height: 400px; background-color: var(--dark-blue); display: flex; align-items: center; justify-content: center; }
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
+        #animated-text-container { position: relative; z-index: 2; text-align: center; }
+        .char { display: inline-block; font-size: 6vw; font-weight: 900; color: #e0e0e0; text-shadow: 1px 1px 1px #ccc, 2px 2px 1px #bbb, 3px 3px 1px #aaa, 4px 4px 1px #999, 5px 5px 10px rgba(0, 0, 0, 0.5); opacity: 0; transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 1s ease; min-width: 0.1em; }
+        .char.space { min-width: 0.5em; }
+        #animated-text-container.is-visible .char { opacity: 1; transform: translate(0, 0) rotate(0) !important; }
+        .system-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .system-card { background-color: #1b294a; padding: 40px 30px; border-radius: 12px; text-align: center; border: 1px solid #303C55; transition: transform 0.3s ease, box-shadow 0.3s ease; --delay: 0s; animation-delay: var(--delay) !important; }
+        .system-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+        .system-card .icon { font-size: 48px; color: var(--main-purple); margin-bottom: 20px; transition: transform 0.3s ease; }
+        .system-card:hover .icon { animation: icon-bounce 0.6s ease; }
+        @keyframes icon-bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .system-card h3 { font-size: 22px; margin-bottom: 10px; color: #ccd6f6; }
+        .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px; margin-top: 50px; justify-content: center;}
+        .philosophy-card { position: relative; aspect-ratio: 1 / 1; max-width: 350px; margin: 0 auto; background-image: linear-gradient(145deg, #8e44ad, #6a5acd); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px; color: #fff; box-shadow: 0 10px 20px rgba(106, 90, 205, 0.2); transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease; --delay: 0s; animation-delay: var(--delay) !important; }
+        .philosophy-card:hover { transform: scale(1.05); box-shadow: 0 20px 40px rgba(106, 90, 205, 0.4); }
+        .card-number { position: absolute; top: 25px; width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 16px; transition: transform 0.4s ease; }
+        .philosophy-card:hover .card-number { transform: scale(1.2) rotate(360deg); }
+        .philosophy-card h3 { font-size: 28px; margin-bottom: 15px; }
+        /* 5대 문화 섹션 - 반응형 디자인 */
+        .culture-title-wrapper { text-align: center; margin-bottom: 60px; }
+        .culture-title { font-family: 'Poppins', sans-serif; font-size: 52px; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(106, 90, 205, 0.8), 0 0 20px rgba(106, 90, 205, 0.6), 0 0 30px rgba(106, 90, 205, 0.4), 0 0 40px rgba(106, 90, 205, 0.2); position: relative; display: inline-block; }
+        .culture-title::before { content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; color: var(--main-purple); transform: translate(3px, 3px); filter: blur(2px); }
+        .culture-subtitle { color: #8892b0; margin-top: 10px; font-size: 18px; }
+        #stardust-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        
+        /* 데스크톱 오빗 디자인 */
+        .culture-orbit-container { position: relative; width: 100%; max-width: 800px; aspect-ratio: 1/1; margin: 0 auto; display: block; }
+        .orbit { position: absolute; top: 50%; left: 50%; border: 1px dashed var(--orbit-color); border-radius: 50%; transform: translate(-50%, -50%); animation: rotate 60s linear infinite; }
+        .orbit.is-active { border-color: #fff; box-shadow: 0 0 20px #fff, 0 0 30px var(--main-purple); }
+        .orbit-1 { width: 65%; height: 65%; animation-duration: 50s; }
+        .orbit-2 { width: 95%; height: 95%; animation-duration: 80s; animation-direction: reverse; }
+        @keyframes rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+        .culture-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 28%; height: 28%; background-image: linear-gradient(145deg, #8e44ad, #6a5acd); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 0 30px rgba(106, 90, 205, 0.7); }
+        .culture-center img { max-width: 60%; }
+        .culture-item { position: absolute; top: 50%; left: 50%; text-align: center; z-index: 5; opacity: 0; --x: 0px; --y: 0px; --delay: 0s; transform: translate(-50%, -50%); transition: opacity 1s ease var(--delay), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1) var(--delay); }
+        .culture-orbit-container.is-visible .culture-item { opacity: 1; transform: translate(-50%, -50%) translate(var(--x), var(--y)); }
+        .culture-pod { width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(106, 90, 205, 0.2), transparent 70%); display: flex; align-items: center; justify-content: center; transition: all 0.4s ease; margin-bottom: 15px; }
+        .culture-item:hover .culture-pod { background: radial-gradient(ellipse at center, rgba(142, 68, 173, 0.4), transparent 70%); box-shadow: 0 0 20px rgba(142, 68, 173, 0.5); }
+        .culture-item .image-wrapper { width: 140px; height: 140px; border-radius: 50%; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); transition: transform 0.4s ease; perspective: 1000px; }
+        .culture-item img { width: 100%; height: 100%; object-fit: cover; }
+        .culture-item:hover .image-wrapper { transform: scale(1.1) rotateY(10deg); }
+        .culture-item .item-text { color: #fff; font-size: 18px; font-weight: 500; opacity: 0.8; transition: opacity 0.3s ease; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
+        .culture-item:hover .item-text { opacity: 1; }
+        .stardust-trail { position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; background: white; border-radius: 50%; box-shadow: 0 0 10px white, 0 0 20px white; opacity: 0; }
+        .culture-orbit-container.is-visible .stardust-trail { animation: fly-out 1.2s cubic-bezier(0.19, 1, 0.22, 1) var(--delay) forwards; }
+        @keyframes fly-out { 0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; } 50% { opacity: 1; } 100% { transform: translate(-50%, -50%) translate(var(--x), var(--y)) scale(0); opacity: 0; } }
+        
+        /* 모바일 그리드 레이아웃 (기본 숨김) */
+        .culture-grid-mobile { display: none; }
+        .customer-language-section .container { max-width: 900px; text-align: center; }
+        .customer-language-section p, .ceo-message p, .content-text p, .about-text p { word-break: keep-all; font-size: 18px; line-height: 1.8; }
+        .customer-image-wrapper { position: relative; width: 100%; max-width: 800px; margin: 60px auto 0; clip-path: polygon(0 10%, 100% 10%, 100% 90%, 0% 90%); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .image-overlay-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0,0,0,0.5); color: #fff; padding: 15px 30px; font-size: 24px; font-weight: 600; border-radius: 8px; backdrop-filter: blur(5px); white-space: nowrap; }
+        .process-flow { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .process-step { text-align: center; flex: 1; min-width: 180px; }
+        .process-circle { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 20px; background-color: #fff; border: 3px solid #e0e7ff; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); transition: all 0.3s ease; }
+        .process-step:hover .process-circle { transform: translateY(-10px); border-color: var(--main-purple); box-shadow: 0 20px 25px -5px rgba(106, 90, 205, 0.2); }
+        .process-icon { font-size: 48px; color: var(--main-purple); margin-bottom: 10px; transition: transform 0.3s ease; }
+        .process-step:hover .process-icon { transform: scale(1.1); animation: icon-jiggle 0.4s; }
+        @keyframes icon-jiggle { 0%,100% {transform: rotate(0) scale(1.1);} 25% {transform: rotate(-5deg) scale(1.1);} 75% {transform: rotate(5deg) scale(1.1);} }
+        .process-circle h3 { font-size: 20px; color: #333; }
+        .process-arrow { font-size: 32px; color: #d1d5db; flex-shrink: 0; opacity: 0; --delay: 0s; transition: opacity 0.5s ease var(--delay); }
+        .process-arrow.is-visible { opacity: 1; animation: arrow-glow 1.5s ease-in-out infinite alternate; animation-delay: var(--delay); }
+        @keyframes arrow-glow { from { color: #d1d5db; } to { color: var(--main-purple); text-shadow: 0 0 10px var(--main-purple); } }
+        .loyal-system-section .outro-text {
+            word-break: keep-all; font-size: 18px; line-height: 1.8;
+            text-align: center; margin-top: 40px;
+        }
+        .ceo-section { padding: 0; }
+        .ceo-intro { position: relative; padding: 120px 0; z-index: 5; }
+        .ceo-intro .container { display: flex; align-items: center; gap: 60px; }
+        .ceo-image-wrapper { flex: 1; clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 75% 100%, 0% 100%); position: relative; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+        .ceo-text-info { flex: 1; }
+        .ceo-text-info h2 { font-size: 36px; font-weight: 700; color: #222; }
+        .ceo-text-info .subtitle { font-size: 24px; font-weight: 500; color: #777; margin-top: 5px; margin-bottom: 20px; }
+        .ceo-text-info h3 { font-size: 28px; font-weight: 600; color: #333; }
+        .ceo-text-info .title { font-size: 20px; color: #888; margin-left: 10px; }
+        .ceo-divider { position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background-color: var(--dark-blue); clip-path: polygon(0 100%, 100% 0, 100% 100%); z-index: 4; }
+        .ceo-message { position: relative; padding: 200px 40px; background-image: url('./images/building_1.png'); background-size: cover; background-position: center; background-attachment: fixed; z-index: 1; }
+        .ceo-message::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10, 20, 40, 0.9) 0%, rgba(10, 20, 40, 0.6) 50%, rgba(10, 20, 40, 0.9) 100%); }
+        .ceo-message .container { color: #fff; text-align: left; }
+        .ceo-message h2 { font-size: 38px; font-weight: 700; margin-bottom: 40px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .ceo-message p { max-width: 800px; margin: 0 0 24px 0; text-shadow: 0 1px 5px rgba(0,0,0,0.5); font-size: 18px; line-height: 2; }
+        .ceo-message p.question { font-weight: 700; margin-top: 40px; font-size: 20px; }
+        
+        /* ================= PART 2 STYLES ================= */
+        .bg-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .layout-split .container, .layout-sticky-image .container { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; }
+        .layout-image-first { order: -1; }
+        .content-text { z-index: 1; }
+        .content-text h2 { font-size: 48px; font-weight: 700; color: #111; margin-bottom: 20px; line-height: 1.3; }
+        .content-text h2 .accent { color: var(--main-purple); }
+        .content-text .sub-heading { font-size: 18px; color: #777; margin-bottom: 30px; font-weight: 500;}
+        .image-group { position: relative; height: 450px; perspective: 1500px; }
+        .graphic-container { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%); }
+        .platform-node { position: absolute; background-color: var(--main-purple); border-radius: 50%; box-shadow: 0 0 20px var(--main-purple); animation: pulse 2.5s infinite ease-in-out; }
+        .platform-node.center { top: 50%; left: 50%; width: 80px; height: 80px; margin: -40px 0 0 -40px; animation-delay: 0s; }
+        .platform-node.p1, .platform-node.p2, .platform-node.p3, .platform-node.p4, .platform-node.p5, .platform-node.p6 { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
+        .platform-node.p1 { top: 20%; left: 50%; animation-delay: 0.2s; }
+        .platform-node.p2 { top: 35%; left: 85%; animation-delay: 0.4s; }
+        .platform-node.p3 { top: 65%; left: 85%; animation-delay: 0.6s; }
+        .platform-node.p4 { top: 80%; left: 50%; animation-delay: 0.8s; }
+        .platform-node.p5 { top: 65%; left: 15%; animation-delay: 1s; }
+        .platform-node.p6 { top: 35%; left: 15%; animation-delay: 1.2s; }
+        .line { position: absolute; top: 50%; left: 50%; background: linear-gradient(to right, rgba(106, 90, 205, 0.1), var(--main-purple)); height: 2px; transform-origin: left center; }
+        .line-1 { width: 120px; transform: rotate(-90deg); }
+        .line-2 { width: 140px; transform: rotate(-30deg); }
+        .line-3 { width: 140px; transform: rotate(30deg); }
+        .line-4 { width: 120px; transform: rotate(90deg); }
+        .line-5 { width: 140px; transform: rotate(150deg); }
+        .line-6 { width: 140px; transform: rotate(-150deg); }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+        .talent-icon { position: absolute; color: #bdc3c7; font-size: 40px; animation: float-up 5s infinite ease-in-out; opacity: 0; }
+        .talent-icon.leader { color: var(--main-purple); font-size: 55px; z-index: 10; }
+        .talent-icon:nth-child(1) { top: 10%; left: 50%; margin-left: -27px; animation-delay: 0s; }
+        .talent-icon:nth-child(2) { top: 40%; left: 35%; animation-delay: 0.5s; }
+        .talent-icon:nth-child(3) { top: 40%; left: 65%; animation-delay: 1s; }
+        .talent-icon:nth-child(4) { top: 70%; left: 20%; animation-delay: 1.5s; }
+        .talent-icon:nth-child(5) { top: 70%; left: 50%; animation-delay: 2s; }
+        .talent-icon:nth-child(6) { top: 70%; left: 80%; animation-delay: 2.5s; }
+        @keyframes float-up { 0% { transform: translateY(20px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-20px); opacity: 0; } }
+        
+        .story-section { background-color: #111; }
+        .story-section .container { display: block; }
+        .story-section .section-title h2, .story-section .section-title p { color: #fff; }
+        .story-cards-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; perspective: 2000px; }
+        .story-card { background: linear-gradient(145deg, #2c2c2e, #1a1a1c); color: #fff; border-radius: 20px; overflow: hidden; position: relative; padding: 40px; min-height: 500px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 30px 60px -10px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); --delay: 0s; transform: rotateY(45deg) scale(0.8); }
+        .story-cards-wrapper.is-visible .story-card { transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) var(--delay), opacity 1s ease var(--delay); transform: rotateY(0) scale(1); }
+        
+        .story-card .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+            filter: grayscale(50%);
+            z-index: 0;
+        }
+        .story-card:hover .bg-image {
+            transform: scale(1.1);
+            opacity: 0.8; 
+            filter: grayscale(0%) brightness(120%);
+        }
+        
+        .story-card-content { position: relative; z-index: 1; }
+        .story-card h3 { font-size: 21px; letter-spacing: 2px; opacity: 1; margin-bottom: 20px; color: #ffffff; font-weight: 600; }
+        .story-card .reserve-btn { margin-top: 20px; align-self: flex-start; background-color: var(--main-purple); color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: 600; box-shadow: 0 0 20px rgba(106, 90, 205, 0.5); z-index: 1; position: relative; }
+        .single-image-wrapper { position: sticky; top: 120px; }
+        .single-image { border-radius: 30px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); transition: transform 0.5s ease; }
+        .single-image-wrapper:hover .single-image { transform: scale(1.03); }
+        .feature-list { list-style: none; margin-top: 40px; }
+        .feature-list-item { display: flex; align-items: center; padding: 20px; border-bottom: 1px solid #eee; transition: background-color 0.3s ease; border-radius: 10px;}
+        .feature-list-item:hover { background-color: #f8f9fa; }
+        .feature-number { font-size: 16px; font-weight: 700; color: var(--main-purple); border: 2px solid var(--main-purple); width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; flex-shrink: 0; margin-right: 20px; transition: all 0.3s ease; }
+        .feature-list-item:hover .feature-number { background-color: var(--main-purple); color: #fff; transform: scale(1.1) rotate(360deg); }
+        .feature-text { font-size: 18px; color: #333; }
+        .seminar-banner { padding: 0; height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .seminar-banner .bg-image { position: absolute; top:0; left:0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+        .seminar-banner::before { content: ''; position: absolute; top:0; left:0; width: 100%; height: 100%; background: rgba(10, 20, 40, 0.6); z-index: 1;}
+        .seminar-banner .container { color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); z-index: 2;}
+        .seminar-banner h2 { font-size: 52px; }
+
+        /* --- 신규 통합된 스타일 --- */
+        .management-philosophy-section { background-color: #f8f9fa; text-align: center; }
+        .philosophy-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
+        .card-item { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .card-item h3 { font-size: 24px; font-weight: 700; color: var(--main-purple); margin-bottom: 20px; }
+        .card-item p { font-size: 18px; line-height: 1.8; color: #555; }
+        .business-area-section { text-align: center; }
+        .business-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 60px; }
+        .business-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 350px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
+        .business-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .business-card img { width: 100%; height: 220px; object-fit: cover; }
+        .business-card-content { padding: 30px; }
+        .business-card .card-title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            backdrop-filter: blur(5px);
+            white-space: nowrap;
+        }
+        .business-card-content h3 { font-size: 22px; margin-bottom: 15px; display: none; }
+        .business-card p { font-size: 16px; line-height: 1.7; color: #666; }
+        .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
+        .term-card { background-color: var(--light-gray); border-radius: 20px; padding: 40px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .term-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(106, 90, 205, 0.2); }
+        .term-card-header { display: flex; align-items: center; margin-bottom: 20px; }
+        .term-title { background-image: linear-gradient(45deg, var(--main-purple), #8367d2); color: #fff; padding: 8px 24px; border-radius: 50px; font-size: 18px; font-weight: 700; }
+        .term-card ul { list-style-type: none; padding-left: 20px; }
+        .term-card li { position: relative; font-size: 16px; line-height: 1.8; color: #555; padding-bottom: 10px; }
+        .term-card li::before { content: '•'; position: absolute; left: -20px; color: var(--main-purple); font-weight: 700; }
+        .table-section { background-color: var(--light-gray); }
+        .table-wrapper { background-color: #fff; border: 1px solid #e5e7eb; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); overflow: hidden; }
+        .responsive-table { width: 100%; border-collapse: collapse; border-style: hidden; }
+        .responsive-table th, .responsive-table td { padding: 20px; text-align: center; border: 1px solid #e5e7eb; }
+        .responsive-table th { background-color: var(--light-gray); color: #555; font-size: 16px; font-weight: 600; }
+        .responsive-table td { font-size: 16px; color: #444; }
+        .responsive-table tbody tr { position: relative; transition: background-color 0.3s ease; }
+        .responsive-table tbody tr:hover { background-color: var(--light-purple); }
+        .responsive-table tbody tr::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 3px; background-color: var(--main-purple); transform: scaleY(0); transition: transform 0.3s ease; transform-origin: top; }
+        .responsive-table tbody tr:hover::after { transform: scaleY(1); }
+        .responsive-table td:first-child { background-color: var(--light-gray); font-weight: 600; color: var(--dark-gray); }
+        .bonus-section .container, .direct-bonus-section .container, .team-bonus-section .container, .matching-bonus-section .container, .promotion-bonus-section .container, .subscribe-bonus-section .container, .leadership-bonus-section .container, .plan-section .container, .final-table-section .container, .location-section .container, .global-map-section .container { display: block; max-width: 1400px;}
+        .bonus-section .section-title h2, .direct-bonus-section .section-title h2, .team-bonus-section .section-title h2, .matching-bonus-section .section-title h2, .promotion-bonus-section .section-title h2, .subscribe-bonus-section .section-title h2, .leadership-bonus-section .section-title h2, .plan-section .section-title h2, .final-table-section .section-title h2, .location-section .section-title h2, .global-map-section .section-title h2 { font-size: 36px; text-align: center; margin-bottom: 40px; }
+        .info-list { list-style: none; border-top: 2px solid #ddd; margin-bottom: 60px;}
+        .info-list li { display: flex; padding: 20px 0; border-bottom: 1px solid #eee; align-items: baseline; }
+        .info-list .info-title { font-weight: 600; color: #555; flex-basis: 100px; flex-shrink: 0; }
+        .info-list .info-content { color: #333; }
+        .diagram-wrapper { background-color: var(--light-gray); border-radius: 20px; padding: 40px; margin-top: 60px; text-align: center; }
+        .diagram-wrapper img { max-width: 100%; height: auto; }
+        .additional-info { background-color: var(--light-gray); border-radius: 20px; padding: 30px; margin-top: 40px; text-align: left; }
+        .additional-info p { font-size: 16px; color: #555; line-height: 1.8; }
+        .matching-bonus-section, .support-bonus-section, .promotion-bonus-section { background-color: var(--light-gray); }
+        .bg-light { background-color: var(--light-gray); }
+        .location-section, .global-map-section { background-color: var(--dark-blue); background-image: radial-gradient(ellipse at center, rgba(46, 56, 110, 0.5) 0%, transparent 70%); padding: 120px 20px; }
+        .location-section .section-title h2, .global-map-section .section-title h2 { color: #fff; }
+        .map-image-wrapper { text-align: center; padding: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 24px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .map-image-wrapper img { max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.4); transition: transform 0.4s ease; }
+        .map-image-wrapper:hover img { transform: scale(1.02); }
+
+        /* --- 모달 스타일 --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 95%;
+            max-width: none;
+            height: 95vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            transition: color 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            color: #ccc;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        #modal-image {
+            max-width: 90vw;
+            max-height: none;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            margin: 40px 0;
+        }
+        
+        .modal.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 스크롤바 스타일링 */
+        .modal-content::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- 푸터 스타일 --- */
+        .main-footer { background-color: #2c2c2c; color: #f0f0f0; padding: 80px 40px; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-logo img { height: 40px; margin-bottom: 20px; }
+        .footer-about p { line-height: 1.7; color: #f0f0f0; }
+        .footer-links h3, .footer-contact h3 { color: #ffffff; font-size: 20px; margin-bottom: 20px; }
+        .footer-links ul li { margin-bottom: 10px; }
+        .footer-links ul li a { color: #f0f0f0; transition: color 0.3s ease; }
+        .footer-links ul li a:hover { color: var(--main-purple); }
+        .footer-contact p { margin-bottom: 10px; color: #f0f0f0; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #555; color: #f0f0f0; }
+
+
+        /* ================= 반응형 디자인 ================= */
+        @media (max-width: 992px) {
+            .section { padding: 80px 20px; }
+            .header-container { padding: 0 20px; }
+            .about-content, .ceo-intro .container { flex-direction: column; gap: 40px; text-align: center; }
+            .philosophy-grid { gap: 40px; }
+            .process-flow { flex-direction: column; }
+            .process-arrow { transform: rotate(90deg); margin: 20px 0; }
+            .layout-split .container, .layout-sticky-image .container { grid-template-columns: 1fr; gap: 60px; }
+            .layout-image-first { order: 0; }
+            .layout-split .layout-image-first { grid-row: 1; }
+            .terms-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            /* 헤더 & 네비게이션 모바일 최적화 */
+            .logo img { height: 32px; }
+            .main-header { 
+                position: fixed; 
+                top: 0; 
+                left: 0; 
+                width: 100%; 
+                background-color: #fff !important; 
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; 
+                border-bottom: none !important; 
+            }
+            .header-container { height: 70px; padding: 0 20px; }
+            
+            .nav-area { gap: 0; }
+
+            .main-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: auto;
+                max-height: 65vh;
+                background-color: #fff;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+                transform: translateY(-100%);
+                transition: transform 0.4s ease;
+                padding: 20px 30px 30px;
+                display: flex;
+                flex-direction: column;
+                z-index: 1001;
+                overflow-y: auto;
+            }
+
+            .main-nav.is-open {
+                transform: translateY(0);
+            }
+            
+            .main-nav-logo {
+                display: block;
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .main-nav-logo img {
+                height: 32px;
+            }
+
+            .main-nav-list {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+
+            .main-nav-list a {
+                color: #222 !important;
+                padding: 14px 0;
+                width: 100%;
+                text-align: left;
+                font-size: 17px;
+                font-weight: 500;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .nav-area > .login-btn {
+                display: none;
+            }
+
+            .main-nav .start-btn-mobile {
+                display: block;
+                text-align: center;
+                padding: 14px;
+                background-color: var(--main-purple);
+                color: #fff;
+                border-radius: 50px;
+                font-weight: 600;
+                margin-top: 20px;
+                font-size: 16px;
+            }
+            
+            .hamburger-btn { 
+                display: flex; 
+                flex-direction: column; 
+                justify-content: space-around; 
+                width: 28px; 
+                height: 22px; 
+                cursor: pointer; 
+                background: transparent; 
+                border: none; 
+                z-index: 1002; 
+                position: absolute; 
+                top: 24px; 
+                right: 20px; 
+            }
+            .header-container { position: relative; }
+            .hamburger-btn span { 
+                width: 100%; 
+                height: 3px; 
+                border-radius: 2px; 
+                transition: all 0.3s ease; 
+                background-color: #222;
+            }
+            .hamburger-btn.is-active span { background-color: #222; }
+            .hamburger-btn.is-active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
+            .hamburger-btn.is-active span:nth-child(2) { opacity: 0; }
+            .hamburger-btn.is-active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+            
+            /* 히어로 섹션 모바일 최적화 */
+            .hero-section { 
+                height: 50vh; 
+                min-height: 400px;
+                background-position: center center;
+            }
+            .hero-logo img { max-width: 240px; }
+            .hero-section .start-btn { 
+                display: inline-block; 
+                padding: 12px 32px;
+                font-size: 16px;
+                margin-top: 20px;
+            }
+            
+            /* 섹션 & 타이포그래피 모바일 최적화 */
+            .section { padding: 60px 20px; }
+            .section-title { margin-bottom: 40px; }
+            .section-title h2 { font-size: 26px; line-height: 1.3; }
+            .section-title p { font-size: 15px; line-height: 1.6; }
+            .content-text h2 { font-size: 24px !important; line-height: 1.4; }
+            .content-text .sub-heading { font-size: 15px; margin-bottom: 20px; }
+            .content-text p { font-size: 15px; line-height: 1.7; }
+            .about-text h2, .ceo-text-info h2 { font-size: 24px; }
+            .about-text .subtitle, .ceo-text-info .subtitle { font-size: 18px; }
+            .about-text p { font-size: 15px; line-height: 1.7; }
+            
+            /* 애니메이션 텍스트 모바일 최적화 */
+            .char { font-size: 9vw; text-shadow: 1px 1px 1px #ccc, 2px 2px 1px #bbb, 3px 3px 8px rgba(0, 0, 0, 0.4); }
+            
+            /* 시스템 그리드 모바일 최적화 */
+            .system-grid { 
+                grid-template-columns: 1fr; 
+                gap: 24px; 
+            }
+            .system-card { 
+                padding: 32px 24px; 
+            }
+            .system-card .icon { font-size: 42px; margin-bottom: 16px; }
+            .system-card h3 { font-size: 20px; }
+            .system-card p { font-size: 15px; line-height: 1.6; }
+            
+            /* 철학 그리드 모바일 최적화 */
+            .philosophy-grid { 
+                grid-template-columns: 1fr; 
+                gap: 30px; 
+                margin-top: 30px;
+            }
+            .philosophy-card { 
+                max-width: 280px; 
+                padding: 32px; 
+            }
+            .philosophy-card h3 { font-size: 24px; margin-bottom: 12px; }
+            .philosophy-card p { font-size: 15px; line-height: 1.6; }
+            .card-number { 
+                top: 20px; 
+                width: 36px; 
+                height: 36px; 
+                font-size: 15px; 
+            }
+            
+            /* 5대 문화 모바일 최적화 */
+            .culture-section { 
+                padding: 60px 20px;
+            }
+            .culture-title { font-size: 32px; }
+            .culture-subtitle { font-size: 15px; margin-top: 8px; }
+            
+            /* 데스크톱 오빗 디자인 숨김 */
+            .culture-orbit-container { 
+                display: none !important;
+            }
+            
+            /* 모바일 그리드 레이아웃 표시 */
+            .culture-grid-mobile { 
+                display: block !important;
+                margin-top: 40px;
+            }
+            
+            .culture-center-mobile {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto 40px;
+                background: linear-gradient(145deg, #8e44ad, #6a5acd);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 0 30px rgba(106, 90, 205, 0.7);
+                animation: pulse-glow 3s ease-in-out infinite;
+            }
+            
+            .culture-center-mobile img {
+                max-width: 60%;
+            }
+            
+            @keyframes pulse-glow {
+                0%, 100% { box-shadow: 0 0 30px rgba(106, 90, 205, 0.7); }
+                50% { box-shadow: 0 0 40px rgba(106, 90, 205, 1), 0 0 60px rgba(106, 90, 205, 0.5); }
+            }
+            
+            .culture-cards-wrapper-mobile {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .culture-card-mobile {
+                background: linear-gradient(135deg, rgba(142, 68, 173, 0.9), rgba(106, 90, 205, 0.9));
+                border-radius: 20px;
+                padding: 30px 24px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                box-shadow: 0 10px 30px rgba(106, 90, 205, 0.3);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .culture-card-mobile:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(106, 90, 205, 0.5);
+            }
+            
+            .culture-card-mobile .image-wrapper-mobile {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                overflow: hidden;
+                flex-shrink: 0;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                background: rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .culture-card-mobile .image-wrapper-mobile img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .culture-card-mobile .text-content-mobile {
+                flex: 1;
+            }
+            
+            .culture-card-mobile .item-title-mobile {
+                color: #fff;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 8px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            
+            .culture-card-mobile .item-description-mobile {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 14px;
+                line-height: 1.6;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            }
+            
+            /* 고객의 언어 섹션 모바일 최적화 */
+            .customer-language-section .container { max-width: 100%; }
+            .customer-language-section h2 { font-size: 24px; margin-bottom: 20px; }
+            .customer-language-section p { font-size: 14px; line-height: 1.7; }
+            .customer-image-wrapper { 
+                margin: 40px auto 0; 
+                clip-path: polygon(0 5%, 100% 5%, 100% 95%, 0% 95%);
+            }
+            .image-overlay-text { 
+                font-size: 16px; 
+                padding: 10px 20px; 
+                white-space: normal;
+                max-width: 80%;
+                text-align: center;
+            }
+            
+            /* 프로세스 플로우 모바일 최적화 */
+            .process-circle { 
+                width: 140px; 
+                height: 140px; 
+                border-width: 2px;
+            }
+            .process-icon { font-size: 40px; margin-bottom: 8px; }
+            .process-circle h3 { font-size: 17px; }
+            .process-arrow { font-size: 28px; margin: 16px 0; }
+            .loyal-system-section .outro-text { 
+                font-size: 14px; 
+                line-height: 1.7; 
+                margin-top: 30px;
+            }
+            
+            /* 레이아웃 이미지 모바일 최적화 */
+            .image-group { height: 300px; }
+            .single-image-wrapper { position: relative; top: 0; }
+            .single-image { border-radius: 20px; }
+            
+            /* 스토리 카드 모바일 최적화 */
+            .story-section { padding: 60px 20px; }
+            .story-section .container { padding: 0; }
+            .story-cards-wrapper { 
+                grid-template-columns: 1fr; 
+                gap: 24px; 
+            }
+            .story-card { 
+                min-height: 420px; 
+                padding: 32px 24px;
+            }
+            .story-card h3 { font-size: 20px; letter-spacing: 1.5px; margin-bottom: 16px; }
+            .story-card p { font-size: 15px; line-height: 1.6; }
+            .story-card .reserve-btn { 
+                width: 100%;
+                padding: 14px 24px; 
+                font-size: 16px;
+                margin-top: 20px;
+                text-align: center;
+                border-radius: 50px;
+            }
+            
+            /* 기능 리스트 모바일 최적화 */
+            .feature-list { margin-top: 30px; }
+            .feature-list-item { 
+                padding: 16px; 
+                border-radius: 8px;
+            }
+            .feature-number { 
+                width: 32px; 
+                height: 32px; 
+                font-size: 14px; 
+                margin-right: 16px;
+                border-width: 2px;
+            }
+            .feature-text { font-size: 15px; }
+            
+            /* CEO 섹션 모바일 최적화 */
+            .ceo-intro { padding: 60px 0; }
+            .ceo-image-wrapper { 
+                clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 50% 100%, 0% 90%);
+            }
+            .ceo-text-info h3 { font-size: 22px; }
+            .ceo-text-info .title { font-size: 17px; }
+            .ceo-divider { height: 100px; }
+            .ceo-message { 
+                padding: 100px 20px; 
+                background-attachment: scroll;
+            }
+            .ceo-message h2 { font-size: 24px; margin-bottom: 30px; }
+            .ceo-message p { font-size: 15px; line-height: 1.8; margin-bottom: 20px; }
+            .ceo-message p.question { font-size: 17px; margin-top: 30px; }
+            
+            /* 비즈니스 카드 모바일 최적화 */
+            .business-cards { 
+                flex-direction: column; 
+                align-items: center;
+                gap: 24px;
+            }
+            .business-card { 
+                width: 100%; 
+                max-width: 380px;
+            }
+            .business-card img { height: 200px; }
+            .business-card-content { padding: 24px; }
+            .business-card .card-title { 
+                font-size: 17px; 
+                padding: 7px 18px;
+                top: 16px;
+            }
+            .business-card p { font-size: 15px; line-height: 1.6; }
+            
+            /* 푸터 모바일 최적화 */
+            .main-footer { padding: 60px 20px; }
+            .footer-container { 
+                grid-template-columns: 1fr; 
+                gap: 32px; 
+                text-align: center; 
+            }
+            .footer-logo img { height: 36px; margin: 0 auto 16px; }
+            .footer-about p, .footer-links ul li a, .footer-contact p { font-size: 14px; line-height: 1.7; }
+            .footer-links h3, .footer-contact h3 { font-size: 18px; margin-bottom: 16px; }
+            .footer-links ul li { margin-bottom: 8px; }
+            .footer-bottom { margin-top: 40px; padding-top: 24px; font-size: 13px; }
+            
+            /* 모달 모바일 최적화 */
+            .modal-content { 
+                padding: 15px; 
+                width: 100%; 
+                height: 100vh;
+            }
+            .modal-close { 
+                top: 15px; 
+                right: 15px; 
+                font-size: 32px; 
+                width: 50px; 
+                height: 50px;
+            }
+            #modal-image { 
+                max-width: 95vw; 
+                margin: 30px 0;
+                border-radius: 8px;
+            }
+            
+            /* 테이블 모바일 최적화 */
+            .table-wrapper { 
+                overflow-x: auto; 
+                border-radius: 12px;
+            }
+            .responsive-table th, .responsive-table td { 
+                padding: 14px 10px; 
+                font-size: 14px;
+            }
+            
+            /* 다이어그램 모바일 최적화 */
+            .diagram-wrapper { 
+                overflow-x: auto; 
+                padding: 20px 15px; 
+                border-radius: 12px;
+            }
+            .diagram-wrapper img { max-width: 200%; }
+            
+            /* 기타 섹션 모바일 최적화 */
+            .info-list li { 
+                flex-direction: column; 
+                align-items: flex-start; 
+                padding: 16px 0;
+            }
+            .info-list .info-title { 
+                margin-bottom: 6px; 
+                font-size: 15px;
+            }
+            .info-list .info-content { font-size: 14px; line-height: 1.6; }
+            
+            .management-philosophy-section .philosophy-cards,
+            .terms-grid { 
+                grid-template-columns: 1fr; 
+                gap: 24px;
+            }
+            
+            .card-item { padding: 28px 20px; }
+            .card-item h3 { font-size: 20px; margin-bottom: 16px; }
+            .card-item p { font-size: 15px; line-height: 1.6; }
+            
+            .term-card { 
+                padding: 28px 20px; 
+                border-radius: 16px;
+            }
+            .term-title { 
+                font-size: 16px; 
+                padding: 7px 20px;
+            }
+            .term-card li { font-size: 14px; line-height: 1.7; }
+            
+            .additional-info { 
+                padding: 24px 20px; 
+                border-radius: 16px;
+                margin-top: 30px;
+            }
+            .additional-info p { font-size: 14px; line-height: 1.7; }
+            
+            .map-image-wrapper { 
+                padding: 24px 16px; 
+                border-radius: 16px;
+            }
+            .map-image-wrapper img { border-radius: 10px; }
+            
+            /* 파티클 배너 모바일 최적화 */
+            .particle-banner { height: 300px; }
+            
+            /* 세미나 배너 모바일 최적화 */
+            .seminar-banner { height: 300px; }
+            .seminar-banner h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="/" class="logo"><img src="./images/logo.png" alt="THE K ASIANA 로고"></a>
+            <div class="nav-area">
+                <nav class="main-nav" id="main-nav">
+                    <div class="main-nav-logo">
+                        <img src="./images/logo.png" alt="THE K ASIANA 로고">
+                    </div>
+                    <ul class="main-nav-list">
+                        <li><a href="#about">회사소개</a></li>
+                        <li><a href="#philosophy">제품철학</a></li>
+                        <li><a href="#management">경영방침</a></li>
+                        <li><a href="#knowhow">비지니스</a></li>
+                    </ul>
+                    <a href="https://www.sebasiplatform.kr/admin/login.asp" class="start-btn-mobile" target="_blank" rel="noopener noreferrer">로그인</a>
+                </nav>
+                <a href="https://www.sebasiplatform.kr/admin/login.asp" class="login-btn" target="_blank" rel="noopener noreferrer">로그인</a>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="메뉴 열기/닫기">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Part 1 Content Start -->
+        <section class="hero-section animate-on-scroll">
+            <div class="hero-content">
+                <div class="hero-logo"><img src="./images/logo_hero.png" alt="THE K ASIANA Hero Logo"></div>
+                <a href="https://www.sebasiplatform.kr/admin/login.asp" class="start-btn" target="_blank" rel="noopener noreferrer">START</a>
+            </div>
+        </section>
+        <section id="about" class="section section-light about-section"><div class="container"><div class="about-content"><div class="about-image animate-on-scroll from-left"><img src="./images/building.png" alt="THE K ASIANA 본사 건물"></div><div class="about-text animate-on-scroll from-right"><h2>더 케이 아시아나</h2><p class="subtitle">The K ASIANA</p><p>태국본사를 기점으로 글로벌진출을 목표로 새로운진출 소비자에게 놀라운 혜택을 주는 회사 삶의 빛과 소금의 역할을 하며 TKA에서 구매한 상품을 통하여 새로운 길과 빛을 발견하여 생활의 가치관과 삶의 스타일이 완벽하게 변할 수 있는 제품군이다.</p></div></div></div></section>
+        <section class="particle-banner"><div id="particles-js"></div><h1 id="animated-text-container" class="animate-on-scroll from-bottom"><span class="char">T</span><span class="char">H</span><span class="char">E</span><span class="char space"> </span><span class="char">K</span><span class="char space"> </span><span class="char">A</span><span class="char">S</span><span class="char">I</span><span class="char">A</span><span class="char">N</span><span class="char">A</span></h1></section>
+        <section class="section section-dark"><div class="container"><div class="section-title animate-on-scroll from-bottom"><h2>Smart TKA</h2><p>Simple & Standard & System</p></div><div class="system-grid"><div class="system-card animate-on-scroll from-bottom" style="--delay: 0s;"><div class="icon"><i class="fas fa-sitemap"></i></div><h3>바이너리 방식</h3><p>견고하고 안정적인 구조를 기반으로 한 효율적인 시스템</p></div><div class="system-card animate-on-scroll from-bottom" style="--delay: 0.2s;"><div class="icon"><i class="fas fa-share-alt"></i></div><h3>스필오버 방식</h3><p>상생과 협력을 통해 함께 성장하는 네트워크 시너지</p></div><div class="system-card animate-on-scroll from-bottom" style="--delay: 0.4s;"><div class="icon"><i class="fas fa-store"></i></div><h3>샵 매장 시스템</h3><p>온/오프라인을 아우르는 혁신적인 유통 플랫폼</p></div><div class="system-card animate-on-scroll from-bottom" style="--delay: 0.6s;"><div class="icon"><i class="fas fa-handshake-angle"></i></div><h3>고객중심 시스템</h3><p>모든 가치의 중심에 고객을 두는 최우선 원칙</p></div></div><div class="section-title animate-on-scroll from-bottom" style="margin-top: 80px; margin-bottom: 0;"><h2>Total Balance System : 토탈 밸런스 시스템</h2></div></div></section>
+        <section id="management" class="section section-light"><div class="container"><div class="section-title animate-on-scroll from-bottom"><h2>더 케이 아시아나 : 경영철학</h2><p>고객의 성공, 유통의 혁명, 글로벌기업도약. 고객만족을 넘어 고객감동, 경제공유시스템</p></div><div class="philosophy-grid"><div class="philosophy-card animate-on-scroll from-left"><div class="card-number">1</div><h3>경영목표</h3><p>고객의 성공, 유통의 혁명,<br>글로벌기업도약</p></div><div class="philosophy-card animate-on-scroll from-bottom" style="--delay: 0.2s;"><div class="card-number">2</div><h3>창업이념</h3><p>나눔, 시대의 트렌드,<br>문화</p></div><div class="philosophy-card animate-on-scroll from-right" style="--delay: 0.4s;"><div class="card-number">3</div><h3>경영방침</h3><p>작지만 정직한 회사,<br>섬세한 시스템 관리</p></div></div></div></section>
+        <section id="culture" class="section section-dark culture-section">
+            <canvas id="stardust-bg"></canvas>
+            <div class="container">
+                <div class="culture-title-wrapper animate-on-scroll from-bottom">
+                    <h2 class="culture-title" data-text="5대 문화">5대 문화</h2>
+                    <p class="culture-subtitle">THE K ASIANA의 핵심 가치</p>
+                </div>
+                <div class="culture-orbit-container">
+                    <div class="orbit orbit-1"></div>
+                    <div class="orbit orbit-2"></div>
+                    <div class="culture-center"><img src="./images/culture_logo.png" alt="THE K ASIANA 로고"></div>
+                </div>
+                
+                <!-- 모바일용 그리드 레이아웃 -->
+                <div class="culture-grid-mobile">
+                    <!-- 중앙 로고 -->
+                    <div class="culture-center-mobile animate-on-scroll from-bottom">
+                        <img src="./images/culture_logo.png" alt="THE K ASIANA 로고">
+                    </div>
+                    
+                    <!-- 5대 문화 카드들 -->
+                    <div class="culture-cards-wrapper-mobile">
+                        <div class="culture-card-mobile animate-on-scroll from-bottom" style="--delay: 0s;">
+                            <div class="image-wrapper-mobile">
+                                <img src="./images/culture_1.png" alt="원칙중심의 문화">
+                            </div>
+                            <div class="text-content-mobile">
+                                <h3 class="item-title-mobile">원칙중심의 문화</h3>
+                                <p class="item-description-mobile">정직과 원칙을 기반으로 한 투명한 경영</p>
+                            </div>
+                        </div>
+                        
+                        <div class="culture-card-mobile animate-on-scroll from-bottom" style="--delay: 0.1s;">
+                            <div class="image-wrapper-mobile">
+                                <img src="./images/culture_2.png" alt="제품의 문화">
+                            </div>
+                            <div class="text-content-mobile">
+                                <h3 class="item-title-mobile">제품의 문화</h3>
+                                <p class="item-description-mobile">고품질 제품으로 고객 가치 실현</p>
+                            </div>
+                        </div>
+                        
+                        <div class="culture-card-mobile animate-on-scroll from-bottom" style="--delay: 0.2s;">
+                            <div class="image-wrapper-mobile">
+                                <img src="./images/culture_3.png" alt="조직의 문화">
+                            </div>
+                            <div class="text-content-mobile">
+                                <h3 class="item-title-mobile">조직의 문화</h3>
+                                <p class="item-description-mobile">소통과 협력으로 함께 성장</p>
+                            </div>
+                        </div>
+                        
+                        <div class="culture-card-mobile animate-on-scroll from-bottom" style="--delay: 0.3s;">
+                            <div class="image-wrapper-mobile">
+                                <img src="./images/culture_4.png" alt="시스템의 문화">
+                            </div>
+                            <div class="text-content-mobile">
+                                <h3 class="item-title-mobile">시스템의 문화</h3>
+                                <p class="item-description-mobile">체계적이고 효율적인 운영 시스템</p>
+                            </div>
+                        </div>
+                        
+                        <div class="culture-card-mobile animate-on-scroll from-bottom" style="--delay: 0.4s;">
+                            <div class="image-wrapper-mobile">
+                                <img src="./images/culture_5.png" alt="나눔의 문화">
+                            </div>
+                            <div class="text-content-mobile">
+                                <h3 class="item-title-mobile">나눔의 문화</h3>
+                                <p class="item-description-mobile">사회와 함께하는 나눔과 배려</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section section-light customer-language-section"><div class="container"><div class="animate-on-scroll from-bottom"><h2>고객의 언어</h2><p>보여 주는 것이 가장 확실한 공감 언어이다. 언어 영역은 소통을 위한 것이다.<br>그리고 의미 전달에 가장 많이 쓰이는 방법 중 하나가 "보여주기"와"그려주기"이다.<br>그림을 그려 준다는 것은 고객의 머리 속에 그림이 그려 지도록 하는것도 포함 되어 있다.</p></div><div class="customer-image-wrapper animate-on-scroll from-bottom" style="animation-delay: 0.2s;"><img src="./images/customer_1.png" alt="고객과 소통하는 모습"><div class="image-overlay-text">Showing & Drawing</div></div></div></section>
+        <section class="section loyal-system-section"><div class="container"><div class="section-title animate-on-scroll from-bottom"><h2>충성고객을 위한 시스템</h2></div><div class="process-flow"><div class="process-step animate-on-scroll from-bottom" style="animation-delay: 0s;"><div class="process-circle"><i class="process-icon fas fa-shopping-cart"></i><h3>최초구매<br>고객</h3></div></div><div class="process-arrow animate-on-scroll from-bottom" style="--delay: 0.2s; animation-delay: 0.2s;"><i class="fas fa-chevron-right"></i></div><div class="process-step animate-on-scroll from-bottom" style="animation-delay: 0.4s;"><div class="process-circle"><i class="process-icon fas fa-undo"></i><h3>반복구매<br>고객</h3></div></div><div class="process-arrow animate-on-scroll from-bottom" style="--delay: 0.6s; animation-delay: 0.6s;"><i class="fas fa-chevron-right"></i></div><div class="process-step animate-on-scroll from-bottom" style="animation-delay: 0.8s;"><div class="process-circle"><i class="process-icon fas fa-gem"></i><h3>단골구매<br>고객</h3></div></div><div class="process-arrow animate-on-scroll from-bottom" style="--delay: 1.0s; animation-delay: 1.0s;"><i class="fas fa-chevron-right"></i></div><div class="process-step animate-on-scroll from-bottom" style="animation-delay: 1.2s;"><div class="process-circle"><i class="process-icon fas fa-heart"></i><h3>지지구매<br>고객</h3></div></div></div><p class="outro-text animate-on-scroll from-bottom" style="animation-delay: 1.4s;">더 케이 아시아나는 고객을 수단이 아닌 함께하는 경제공유하는 목적으로 지향을 한다<br>더케이아시아나의 고객 철학은 잘 보여주는 것이 함께 성장하고 공유하는 철학으로 고객의 성공시키기 위해서는<br>고객 만족시키는 정도로는 부족 하다 고객 만족을 넘어 고객 감동 더 나아가서는 고객과 함께 경제공유하는<br>시스템으로 나아갈 것이다.</p></div></section>
+        <!-- Part 1 Content End -->
+
+        <!-- Part 2 Content Start -->
+        <section class="section layout-split">
+            <canvas class="bg-canvas" id="bg-canvas-1"></canvas>
+            <div class="container">
+                <div class="content-text animate-on-scroll from-left">
+                    <h2 style="font-size: 36px; color: #222;">유통의 혁명 - <span class="accent">플랫폼 시대</span></h2>
+                    <p>더 케이 아시아나는 전세계유통혁명의 돈키호테가 되고자 한다.<br>새로운 변화 일으키며 그 변화 속에 다양한 콘텐츠와 트렌드를 만들어 가는데<br>작은 초점과 시발점이 되어서 차별화, 다양성들을 극대화 시키는데 작은 힘이 되는 더 케이 아시아나가 되고자 한다.</p>
+                </div>
+                <div class="image-group animate-on-scroll from-right">
+                    <div class="graphic-container">
+                        <div class="line line-1"></div>
+                        <div class="line line-2"></div>
+                        <div class="line line-3"></div>
+                        <div class="line line-4"></div>
+                        <div class="line line-5"></div>
+                        <div class="line line-6"></div>
+                        <div class="platform-node center"></div>
+                        <div class="platform-node p1"></div>
+                        <div class="platform-node p2"></div>
+                        <div class="platform-node p3"></div>
+                        <div class="platform-node p4"></div>
+                        <div class="platform-node p5"></div>
+                        <div class="platform-node p6"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section layout-split section-light">
+            <canvas class="bg-canvas" id="bg-canvas-2"></canvas>
+            <div class="container">
+                 <div class="image-group animate-on-scroll from-left layout-image-first">
+                    <div class="graphic-container">
+                        <i class="fas fa-user talent-icon leader"></i>
+                        <i class="fas fa-user talent-icon"></i>
+                        <i class="fas fa-user talent-icon"></i>
+                        <i class="fas fa-user talent-icon"></i>
+                        <i class="fas fa-user talent-icon"></i>
+                        <i class="fas fa-user talent-icon"></i>
+                    </div>
+                </div>
+                <div class="content-text animate-on-scroll from-right">
+                    <h2 style="font-size: 36px; color: #222;">The K Asiana는<br><span class="accent">초일류기업을 지향하고 있습니다.</span></h2>
+                    <p>이를 위해 정직과 선함이 최고의 전략이라는 정신상략(正善上略)을 경영 철학으로 글로벌기업으로 나아가기 위해서는, 소비자에게 좋은 품질의 제품을 저렴한 가격에 공급하는 유통의 본질에 충실하고 있습니다.<br>또한 더 케이 아시아나의 구성원들이 초일류가 될 수 있도록 바른 양심과 도덕성을 바탕으로 부가가치를 창출할 수 있는 창의적인 인재 육성을 중요시하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="philosophy" class="section story-section">
+            <canvas class="bg-canvas" id="bg-canvas-3"></canvas>
+            <div class="container">
+                <div class="section-title animate-on-scroll from-bottom"><h2>브랜드 스토리</h2><p>면역, 건강의 미, 라이프스타일</p></div>
+                <div class="story-cards-wrapper animate-on-scroll">
+                    <div class="story-card" style="--delay: 0s;">
+                        <img src="./images/story_1.png" class="bg-image" alt="DNA 배경">
+                        <div class="story-card-content"><h3>CANF</h3><p>CANF는 첨단 피부과학과 유효 성분 조합으로 피부 본연의 탄력과 결을 되찾는 솔루션을 만듭니다</p></div>
+                        <a href="#" class="reserve-btn" data-detail="1">DETAIL</a>
+                    </div>
+                    <div class="story-card" style="--delay: 0.2s;">
+                        <img src="./images/story_2.png" class="bg-image" alt="시스템 배경">
+                        <div class="story-card-content"><h3>AMARTE ULTRA VEIL</h3><p>피부진정성분 특허를 받은 MultiEx BSASM와 식물성 추출물 함유로 자외선으로 인해 지치고 민감해진 피부에윤기를 부여합니다다</p></div>
+                        <a href="#" class="reserve-btn" data-detail="2">DETAIL</a>
+                    </div>
+                    <div class="story-card" style="--delay: 0.4s;">
+                        <img src="./images/story_3.png" class="bg-image" alt="인물 배경">
+                        <div class="story-card-content"><h3>SILKTOX</h3><p>은행 열매를 20여년 동안 발효한 천연 원료'은행 추출물'</p></div>
+                        <a href="#" class="reserve-btn" data-detail="3">DETAIL</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section layout-sticky-image vision-section">
+            <canvas class="bg-canvas" id="bg-canvas-4"></canvas>
+            <div class="container">
+                <div class="content-text animate-on-scroll from-left">
+                    <h2>정직한 회사</h2><p class="sub-heading">정직&원칙&문화</p><p><주>더 케이 아시아나는 정직한 회사를 지향하고 있습니다. 화려하고 규모만 큰 회사보다는 내실 있는 회사가 되어야 합니다. 이는 더 케이 아시아나의 창업이념 중의 하나인 "정직"을 위한 경영방침이기도 합니다.</p><p>이를 위해서는 낭비되는 요소를 제거하고 섬세한 경영 관리가 필요합니다. 정직한 회사란 직원들의 행복이 크고 고객의 성공이 크고 사회의 발전에 크게 이바지하는 "글로벌"회사입니다.</p>
+                </div>
+                <div class="single-image-wrapper animate-on-scroll from-right"><div class="single-image"><img src="./images/vision_1.png" alt="비전"></div></div>
+            </div>
+        </section>
+
+        <section class="section layout-sticky-image sharing-section">
+            <canvas class="bg-canvas" id="bg-canvas-5"></canvas>
+            <div class="container">
+                <div class="single-image-wrapper animate-on-scroll from-left layout-image-first"><div class="single-image"><img src="./images/sharing_1.png" alt="나눔의 문화"></div></div>
+                <div class="content-text animate-on-scroll from-right">
+                    <h2>나눔의 문화</h2><p class="sub-heading">나눔&기쁨&공유</p><p>나눔의 기쁨을 누리기로 결심하다<br>관계형성의 7대원칙을 중심으로 나눔은 더 케이 아시아나부터 실천하는 회사이다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section layout-sticky-image principle-section">
+            <canvas class="bg-canvas" id="bg-canvas-6"></canvas>
+            <div class="container">
+                <div class="content-text animate-on-scroll from-left">
+                    <h2>원칙중심의 문화</h2><p>일류 기업을 넘어 초일류 기업을 지향하는 더 케이 아시아나에는 원칙중심, 문화, 나눔등의 5대 문화가 있습니다.</p><p>원칙중심의 문화는 더 케이 아시아나인들이 이 사회의 모두에게 이익이 되도록 움직이는 것입니다. 성장의 문화는 더 케이 아시아나 회원과, 소비자, 그리고 지역사회가 함께 성장해 나가는 것입니다.</p><p>나눔의 문화는 더 케이 아시아나가 세상과 소통하며 사랑하는 방법입니다. 더 케이 아시아나가 지향하고 있는 5대 문화는 더 케이 아시아나 100년 기업으로 나아가기 위한 소중한 밑거름입니다.</p>
+                </div>
+                <div class="single-image-wrapper animate-on-scroll from-right"><div class="single-image"><img src="./images/principle_1.png" alt="원칙중심의 문화"></div></div>
+            </div>
+        </section>
+
+        <section id="knowhow" class="section layout-sticky-image knowhow-section">
+            <canvas class="bg-canvas" id="bg-canvas-7"></canvas>
+            <div class="container">
+                <div class="single-image-wrapper animate-on-scroll from-left layout-image-first"><div class="single-image"><img src="./images/knowhow_1.png" alt="성공시스템 노하우"></div></div>
+                <div class="animate-on-scroll from-right">
+                    <div class="section-title" style="text-align: left; margin-bottom: 40px;"><h2>더 아시아나 성공시스템 노하우</h2><p>매월 1회 진행되며 성공노하우와 균형잡힌 삶에 대한 방향을 제시해주는<br>더 케이 아시아나의 대표적인 공식 세미나 이다.</p></div>
+                    <ul class="feature-list">
+                        <li class="feature-list-item"><div class="feature-number">01</div><span class="feature-text">인생시나리오 작성으로 시작을 한다</span></li>
+                        <li class="feature-list-item"><div class="feature-number">02</div><span class="feature-text">신규직급 취득를 축하 하는 승급식</span></li>
+                        <li class="feature-list-item"><div class="feature-number">03</div><span class="feature-text">다채로운 문화예술공연등의 프로그램으로 구성</span></li>
+                        <li class="feature-list-item"><div class="feature-number">04</div><span class="feature-text">더 케이 아시아나 성공시스템으로 함께 성장하는 프로그램</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        
+
+        <!-- Part 2 Content End -->
+
+        <!-- ========== Part 3 & 4 Content Start ========== -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section id="business" class="section business-area-section section-dark">
+            <div class="container">
+                <div class="section-title animate-on-scroll from-bottom">
+                    <h2>BUSINESS AREA</h2>
+                    <p>더 케이 아시아나의 혁신적인 사업 영역</p>
+                </div>
+                <div class="business-cards">
+                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0s;">
+                        <span class="card-title">헬스 & 뷰티</span>
+                        <img src="./images/business-1.png" alt="헬스 & 뷰티 사업">
+                        <div class="business-card-content">
+                            <p>최첨단 바이오 기술을 바탕으로 한 건강기능식품과 코스메틱 제품을 통해 내면과 외면의 아름다움을 동시에 추구합니다.</p>
+                        </div>
+                    </div>
+                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0.2s;">
+                        <span class="card-title">라이프스타일</span>
+                        <img src="./images/business-2.png" alt="라이프스타일 사업">
+                        <div class="business-card-content">
+                            <p>고객의 삶의 질을 높이는 혁신적인 생활용품과 서비스를 제공하여 일상에 새로운 가치와 편리함을 더합니다.</p>
+                        </div>
+                    </div>
+                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0.4s;">
+                        <span class="card-title">플랫폼</span>
+                        <img src="./images/business-3.png" alt="플랫폼 사업">
+                        <div class="business-card-content">
+                            <p>전 세계 소비자와 생산자를 잇는 유통 플랫폼을 통해 국경 없는 비즈니스 기회를 창출하고 새로운 시장을 개척합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========== Part 4 Content End ========== -->
+    </main>
+    
+    <!-- 모달 구조 -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modal-image" src="" alt="상세 이미지">
+        </div>
+    </div>
+    
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="/" class="footer-logo"><img src="./images/logo.png" alt="THE K ASIANA 로고"></a>
+                <p>더 케이 아시아나는 고객의 성공을 최우선으로 생각하며, 정직과 나눔의 가치를 실현하는 초일류 기업으로 나아갑니다.</p>
+            </div>
+            <div class="footer-links">
+                <h3>바로가기</h3>
+                <ul>
+                    <li><a href="#about">회사소개</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>고객센터</h3>
+                <p><strong>이메일:</strong> s01072099939@gmail.com</p>
+                <p><strong>주소:</strong> 충남 아산시 탕정면 용두리 695-1번지 콜럼버스2차 903호</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 THE K ASIANA. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 모바일 네비게이션 ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mainNav = document.getElementById('main-nav');
+        const navLinks = mainNav.querySelectorAll('a');
+        const body = document.body;
+        const header = document.querySelector('.main-header'); 
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('is-open');
+            hamburgerBtn.classList.toggle('is-active', isOpen);
+            header.classList.toggle('is-open-nav', isOpen);
+        });
+
+        // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('is-active');
+                mainNav.classList.remove('is-open');
+                header.classList.remove('is-open-nav');
+            });
+        });
+
+        // --- 스크롤 옵저버 ---
+        const scrollObserver = new IntersectionObserver((entries, observer) => { 
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) { 
+                    entry.target.classList.add('is-visible'); 
+                    if (entry.target.classList.contains('culture-orbit-container')) {
+                        initCultureItems(entry.target);
+                    }
+                    observer.unobserve(entry.target); 
+                } 
+            }); 
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.animate-on-scroll, .culture-orbit-container').forEach(el => scrollObserver.observe(el));
+        
+        // --- 헤더 스크롤 효과 ---
+        if (header) { window.addEventListener('scroll', () => { window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); }); }
+        
+        // --- 파티클 JS ---
+        if (document.getElementById('particles-js')) { particlesJS('particles-js', {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.5},"size":{"value":3,"random":true},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4},"move":{"enable":true,"speed":2,"out_mode":"out"}},"interactivity":{"events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"}},"modes":{"grab":{"distance":140},"push":{"particles_nb":4}}},"retina_detect":true}); }
+        
+        // --- 텍스트 애니메이션 ---
+        const textContainer = document.getElementById('animated-text-container');
+        if (textContainer) {
+            const observer = new MutationObserver(() => {
+                if (textContainer.classList.contains('is-visible')) {
+                    const chars = textContainer.querySelectorAll('.char');
+                    chars.forEach((char, i) => { const randomX = (Math.random() - 0.5) * 800; const randomY = (Math.random() - 0.5) * 300; char.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${(Math.random() - 0.5) * 360}deg)`; char.style.transitionDelay = `${i * 0.05}s`; });
+                    observer.disconnect();
+                }
+            });
+            observer.observe(textContainer, { attributes: true });
+        }
+        
+        // --- 5대 문화 아이템 생성 및 리사이즈 대응 ---
+        let cultureItemsInitialized = false;
+        const cultureContainer = document.querySelector('.culture-orbit-container');
+        
+        function initCultureItems(container) {
+            if (!container) return;
+            container.querySelectorAll('.culture-item, .stardust-trail').forEach(el => el.remove());
+
+            const cultureData = [{ name: '원칙중심의 문화', img: 'culture_1.png', orbit: 2, angle: 215 }, { name: '제품의 문화', img: 'culture_2.png', orbit: 1, angle: 285 }, { name: '조직의 문화', img: 'culture_3.png', orbit: 2, angle: 355 }, { name: '시스템의 문화', img: 'culture_4.png', orbit: 1, angle: 75 }, { name: '나눔의 문화', img: 'culture_5.png', orbit: 2, angle: 145 }];
+            
+            cultureData.forEach((data, i) => {
+                const orbitEl = container.querySelector(`.orbit-${data.orbit}`);
+                if (!orbitEl) return;
+                
+                const radiusX = orbitEl.offsetWidth / 2;
+                const radiusY = orbitEl.offsetHeight / 2;
+                if (radiusX === 0 || radiusY === 0) return;
+
+                const angleRad = data.angle * (Math.PI / 180);
+                const x = radiusX * Math.cos(angleRad);
+                const y = radiusY * Math.sin(angleRad);
+                const delay = i * 0.15 + 0.5;
+
+                ['stardust-trail', 'culture-item'].forEach(type => {
+                    const el = document.createElement('div');
+                    el.className = type;
+                    el.style.setProperty('--x', `${x}px`);
+                    el.style.setProperty('--y', `${y}px`);
+                    el.style.setProperty('--delay', `${delay}s`);
+                    if (type === 'culture-item') {
+                        el.innerHTML = `<div class="culture-pod"><div class="image-wrapper"><img src="./images/${data.img}" alt="${data.name}"></div></div><p class="item-text">${data.name}</p>`;
+                        el.addEventListener('mouseenter', () => orbitEl.classList.add('is-active'));
+                        el.addEventListener('mouseleave', () => orbitEl.classList.remove('is-active'));
+                    }
+                    container.appendChild(el);
+                });
+            });
+            
+            if (!cultureItemsInitialized) {
+                container.classList.remove('is-visible');
+                void container.offsetWidth;
+                container.classList.add('is-visible');
+                cultureItemsInitialized = true;
+            }
+        }
+        
+        // --- Part 2 스크립트 (틸트, 캔버스) ---
+        class TiltEffect {
+            constructor(element) { this.element = element; this.max = 10; this.element.addEventListener("mousemove", (e) => this.onMouseMove(e)); this.element.addEventListener("mouseleave", () => this.onMouseLeave()); }
+            onMouseMove(e) { const { left, top, width, height } = this.element.getBoundingClientRect(); const x = e.clientX - left; const y = e.clientY - top; const rX = (this.max/2 - (y/height)*this.max).toFixed(2); const rY = ((x/width)*this.max - this.max/2).toFixed(2); this.element.style.transform = `scale(1.05) rotateX(${rX}deg) rotateY(${rY}deg)`; }
+            onMouseLeave() { this.element.style.transform = `scale(1) rotateX(0) rotateY(0)`; }
+        }
+        document.querySelectorAll('.image-group').forEach(group => new TiltEffect(group));
+
+        const backgroundEffects = {
+            'bg-canvas-1':(ctx,w,h,m,t)=>{ctx.fillStyle='rgba(255,255,255,0.03)';ctx.fillRect(0,0,w,h);ctx.fillStyle=`rgba(106,90,205,0.08)`;ctx.font='15px monospace';const cols=backgroundEffects.c1=backgroundEffects.c1||Array(Math.floor(w/20)).fill(1);cols.forEach((y,i)=>{ctx.fillText(String.fromCharCode(Math.random()*128),i*20,y);cols[i]=y>100+Math.random()*1e4?0:y+20})},
+            'bg-canvas-2':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c2=backgroundEffects.c2||Array.from({length:80},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2,o:Math.random()*0.5}));p.forEach(e=>{ctx.beginPath();ctx.arc(e.x,e.y,e.r,0,2*Math.PI);ctx.fillStyle=`rgba(106,90,205,${e.o})`;ctx.fill()});for(let i=0;i<p.length;i++)for(let j=i;j<p.length;j++)Math.hypot(p[i].x-p[j].x,p[i].y-p[j].y)<100&&(ctx.beginPath(),ctx.moveTo(p[i].x,p[i].y),ctx.lineTo(p[j].x,p[j].y),ctx.strokeStyle=`rgba(106,90,205,${(100-Math.hypot(p[i].x-p[j].x,p[i].y-p[j].y))/200})`,ctx.stroke())},
+            'bg-canvas-3':(ctx,w,h,m,t)=>{const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,`hsl(${t/20%360}, 100%, 5%)`);g.addColorStop(1,`hsl(${(t/20+60)%360}, 100%, 5%)`);ctx.fillStyle=g;ctx.fillRect(0,0,w,h)},
+            'bg-canvas-4':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c4=backgroundEffects.c4||Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,vx:Math.random()-0.5,vy:Math.random()-0.5}));p.forEach(e=>{e.x+=e.vx;e.y+=e.vy;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);ctx.beginPath();ctx.arc(e.x,e.y,2,0,2*Math.PI);ctx.fillStyle='rgba(170,170,170,0.3)';ctx.fill()})},
+            'bg-canvas-5':(ctx,w,h,m)=>{ctx.clearRect(0,0,w,h);for(let i=0;i<20;i++){ctx.beginPath();const g=ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,w/2);g.addColorStop(0,'rgba(255,223,186,0.04)');g.addColorStop(1,'rgba(255,223,186,0)');ctx.fillStyle=g;ctx.arc(m.x,m.y,w,(i/20)*2*Math.PI,((i+0.5)/20)*2*Math.PI);ctx.lineTo(m.x,m.y);ctx.fill()}},
+            'bg-canvas-6':(ctx,w,h,m,t)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c6=backgroundEffects.c6||[];if(p.length<100&&Math.random()>0.9)p.push({x:Math.random()*w,y:Math.random()*h,w:0,h:0,life:100});ctx.strokeStyle='rgba(106,90,205,0.2)';p.forEach((r,i)=>{r.w+=2;r.h+=2;r.life--;if(r.life<=0)p.splice(i,1);ctx.strokeRect(r.x-r.w/2,r.y-r.h/2,r.w,r.h)})},
+            'bg-canvas-7':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c7=backgroundEffects.c7||Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,vx:Math.random()-.5,vy:Math.random()-.5}));ctx.lineWidth=0.2;ctx.strokeStyle='rgba(106,90,205,0.8)';p.forEach(e=>{e.x+=e.vx;e.y+=e.vy;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);p.forEach(o=>{Math.hypot(e.x-o.x,e.y-o.y)<50&&(ctx.beginPath(),ctx.moveTo(e.x,e.y),ctx.lineTo(o.x,o.y),ctx.stroke())})})},
+            'bg-canvas-8':(ctx,w,h,m,t)=>{ctx.fillStyle='rgba(0,0,0,0.04)';ctx.fillRect(0,0,w,h);const s=backgroundEffects.c8=backgroundEffects.c8||Array.from({length:200},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5}));ctx.fillStyle='rgba(255,255,255,0.6)';s.forEach(p=>{p.y-=0.1;p.y<0&&(p.y=h);ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,2*Math.PI);ctx.fill()})},
+            'bg-canvas-9':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c9=backgroundEffects.c9||Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,vx:Math.random()-.5,vy:Math.random()-.5}));ctx.lineWidth=0.2;ctx.strokeStyle='rgba(106,90,205,0.8)';p.forEach(e=>{e.x+=e.vx;e.y+=e.vy;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);p.forEach(o=>{Math.hypot(e.x-o.x,e.y-o.y)<50&&(ctx.beginPath(),ctx.moveTo(e.x,e.y),ctx.lineTo(o.x,o.y),ctx.stroke())})})},
+        };
+
+        function initCanvas(canvas) {
+            const ctx = canvas.getContext('2d');
+            let w, h, mouse = {x:0, y:0}, time = 0;
+            function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; }
+            function animate() {
+                if (!w || !h) resize();
+                if(backgroundEffects[canvas.id]) { backgroundEffects[canvas.id](ctx, w, h, mouse, time); }
+                time++;
+                requestAnimationFrame(animate);
+            }
+            canvas.closest('.section').addEventListener('mousemove', e => { const rect = canvas.getBoundingClientRect(); mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top; });
+            window.addEventListener('resize', resize);
+            resize(); animate();
+        }
+
+        document.querySelectorAll('.bg-canvas').forEach(initCanvas);
+        
+        // --- 리사이즈 대응 ---
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (cultureContainer && cultureContainer.classList.contains('is-visible')) {
+                    initCultureItems(container);
+                }
+            }, 250);
+        });
+        
+        // --- 모달 기능 ---
+        const modal = document.getElementById('detail-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalClose = document.querySelector('.modal-close');
+        const detailButtons = document.querySelectorAll('.reserve-btn[data-detail]');
+        
+        // DETAIL 버튼 클릭 이벤트
+        detailButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const detailNumber = button.getAttribute('data-detail');
+                const imageSrc = `./images/detail_${detailNumber}.png`;
+                
+                modalImage.src = imageSrc;
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // 스크롤 방지
+            });
+        });
+        
+        // 모달 닫기 기능
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto'; // 스크롤 복원
+        }
+        
+        // X 버튼 클릭
+        modalClose.addEventListener('click', closeModal);
+        
+        // 배경 클릭
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // ESC 키 누르기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
