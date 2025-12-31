@@ -338,8 +338,17 @@
             filter: none;
             z-index: 0;
         }
+        .story-card:first-child .bg-image {
+            transform: scale(1.15) translate(10px, 30px);
+            object-position: center center;
+        }
         .story-card:hover .bg-image {
             transform: scale(1.05);
+            opacity: 1; 
+            filter: brightness(110%);
+        }
+        .story-card:first-child:hover .bg-image {
+            transform: scale(1.2) translate(10px, 30px);
             opacity: 1; 
             filter: brightness(110%);
         }
@@ -994,6 +1003,13 @@
             .story-card:hover {
                 transform: translateY(-4px) scale(1.01);
                 box-shadow: 0 16px 32px rgba(0,0,0,0.12), 0 6px 12px rgba(0,0,0,0.08);
+            }
+            .story-card:first-child .bg-image {
+                transform: scale(1.1) translate(10px, 30px);
+                object-position: center center;
+            }
+            .story-card:first-child:hover .bg-image {
+                transform: scale(1.15) translate(10px, 30px);
             }
             .story-card h3 { font-size: 22px; letter-spacing: 1px; margin-bottom: 6px; font-weight: 400; }
             .story-card .subtitle { font-size: 16px; letter-spacing: 0.5px; margin-bottom: 16px; font-weight: 400; }
