@@ -51,34 +51,128 @@
         .is-visible { opacity: 1; transform: translate(0, 0) !important; }
 
         /* --- 헤더 & 네비게이션 --- */
-        .main-header { width: 100%; background-color: transparent; border-bottom: 1px solid rgba(255, 255, 255, 0.2); position: fixed; top: 0; left: 0; z-index: 1000; transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; }
-        .main-header.scrolled { background-color: #fff; border-bottom: 1px solid #e0e0e0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .main-header.scrolled .main-nav-list a { color: #222; }
-        .main-header.scrolled .login-btn { color: #fff; background-color: var(--main-purple); }
-        .main-header.scrolled .login-btn:hover { background-color: #5545b3; }
-        .main-header.scrolled .hamburger-btn span { background-color: #222; }
-        .header-container { max-width: 1320px; margin: 0 auto; padding: 0 40px; height: 90px; display: flex; justify-content: space-between; align-items: center; }
-        .logo img { height: 40px; display: block; }
-        .nav-area { display: flex; align-items: center; gap: 40px; }
-        .main-nav-list { display: flex; gap: 60px; }
-        .main-nav-list a { display: block; font-size: 18px; font-weight: 500; color: #fff; padding: 10px 0; position: relative; transition: color 0.3s ease; }
+        .main-header { 
+            width: 100%; 
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+            transition: all 0.4s ease; 
+        }
+        .main-header.scrolled { 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+        }
+        .main-header.scrolled .main-nav-list a { 
+            color: #222; 
+            text-shadow: none;
+        }
+        .main-header.scrolled .login-btn { 
+            color: #fff; 
+            background-color: var(--main-purple);
+            border-color: var(--main-purple);
+        }
+        .main-header.scrolled .login-btn:hover { 
+            background-color: #5545b3; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(106, 90, 205, 0.4);
+        }
+        .main-header.scrolled .hamburger-btn span { 
+            background-color: #222; 
+        }
+        .header-container { 
+            max-width: 1320px; 
+            margin: 0 auto; 
+            padding: 0 40px; 
+            height: 65px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo img { 
+            height: 50px; 
+            width: auto; 
+            min-width: 110px; 
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        .main-header.scrolled .logo img {
+            filter: none;
+        }
+        .nav-area { 
+            display: flex; 
+            align-items: center; 
+            gap: 40px; 
+        }
+        .main-nav-list { 
+            display: flex; 
+            gap: 45px; 
+        }
+        .main-nav-list a { 
+            display: block; 
+            font-size: 16px; 
+            font-weight: 600; 
+            letter-spacing: 0.3px;
+            color: #fff; 
+            padding: 8px 0; 
+            position: relative; 
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        .main-nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--main-purple), #fff);
+            transition: width 0.3s ease;
+        }
+        .main-nav-list a:hover::after {
+            width: 100%;
+        }
+        .main-nav-list a:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            text-shadow: 0 4px 12px rgba(106, 90, 205, 0.8);
+        }
         .login-btn, .start-btn {
             display: inline-block;
             padding: 10px 24px;
-            border: 1px solid var(--main-purple);
+            border: 2px solid rgba(255, 255, 255, 0.8);
             border-radius: 50px;
             color: #fff;
-            background-color: transparent;
+            background: rgba(106, 90, 205, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             font-weight: 600;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        .login-btn:hover, .start-btn:hover { background-color: var(--main-purple); color: #fff; }
+        .login-btn:hover, .start-btn:hover { 
+            background: var(--main-purple);
+            border-color: var(--main-purple);
+            color: #fff; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 90, 205, 0.5);
+        }
         .main-nav .start-btn-mobile { display: none; }
         .main-nav-logo { display: none; }
         .hamburger-btn { display: none; }
 
         /* ================= PART 1 STYLES ================= */
-        .hero-section { height: 60vh; background-image: url('./images/hero_bg.png'); background-repeat: no-repeat; background-position: center center; background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .hero-section { height: 60vh; background-image: url('./gif/hero_bg.gif'); background-repeat: no-repeat; background-position: center center; background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .hero-section .hero-content { position: relative; z-index: 2; text-align: center; }
         .hero-section .start-btn { 
             margin-top: 25px; 
@@ -87,10 +181,11 @@
             border-radius: 50px; /* 곡선 수정 */
             font-size: 18px;
             background-color: rgba(106, 90, 205, 0.8); 
+            display: none;
         }
         .hero-section .start-btn:hover { background-color: #fff; color: var(--main-purple); }
-        .hero-section::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(10, 20, 40, 0.5); z-index: 1; }
-        .hero-logo { opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.5s forwards; }
+        .hero-section::before { display: none; }
+        .hero-logo { opacity: 0; transform: translateY(30px); animation: fadeInUp 1s ease 0.5s forwards; display: none; }
         .hero-logo img { max-width: 320px; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
         .about-content { display: flex; align-items: center; gap: 80px; }
@@ -119,7 +214,8 @@
         .philosophy-card:hover .card-number { transform: scale(1.2) rotate(360deg); }
         .philosophy-card h3 { font-size: 28px; margin-bottom: 15px; }
         /* 5대 문화 섹션 - 반응형 디자인 */
-        .culture-title-wrapper { text-align: center; margin-bottom: 60px; }
+        .culture-section { padding: 80px 40px !important; }
+        .culture-title-wrapper { text-align: center; margin-bottom: 40px; }
         .culture-title { font-family: 'Poppins', sans-serif; font-size: 52px; font-weight: 700; color: #fff; text-shadow: 0 0 10px rgba(106, 90, 205, 0.8), 0 0 20px rgba(106, 90, 205, 0.6), 0 0 30px rgba(106, 90, 205, 0.4), 0 0 40px rgba(106, 90, 205, 0.2); position: relative; display: inline-block; }
         .culture-title::before { content: attr(data-text); position: absolute; left: 0; top: 0; z-index: -1; color: var(--main-purple); transform: translate(3px, 3px); filter: blur(2px); }
         .culture-subtitle { color: #8892b0; margin-top: 10px; font-size: 18px; }
@@ -226,8 +322,9 @@
         .story-section .container { display: block; }
         .story-section .section-title h2, .story-section .section-title p { color: #fff; }
         .story-cards-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; perspective: 2000px; }
-        .story-card { background: linear-gradient(145deg, #2c2c2e, #1a1a1c); color: #fff; border-radius: 20px; overflow: hidden; position: relative; padding: 40px; min-height: 500px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 30px 60px -10px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); --delay: 0s; transform: rotateY(45deg) scale(0.8); }
-        .story-cards-wrapper.is-visible .story-card { transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) var(--delay), opacity 1s ease var(--delay); transform: rotateY(0) scale(1); }
+        .story-card { background: #fff; color: #222; border-radius: 24px; overflow: hidden; position: relative; padding: 40px; min-height: 500px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 8px 16px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.02); --delay: 0s; transform: rotateY(45deg) scale(0.8); transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s ease; }
+        .story-cards-wrapper.is-visible .story-card { transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1) var(--delay), opacity 1s ease var(--delay), box-shadow 0.4s ease; transform: rotateY(0) scale(1); }
+        .story-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,0.12), 0 12px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.03); }
         
         .story-card .bg-image {
             position: absolute;
@@ -236,19 +333,21 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.5;
+            opacity: 1;
             transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
-            filter: grayscale(50%);
+            filter: none;
             z-index: 0;
         }
         .story-card:hover .bg-image {
-            transform: scale(1.1);
-            opacity: 0.8; 
-            filter: grayscale(0%) brightness(120%);
+            transform: scale(1.05);
+            opacity: 1; 
+            filter: brightness(110%);
         }
         
         .story-card-content { position: relative; z-index: 1; }
-        .story-card h3 { font-size: 21px; letter-spacing: 2px; opacity: 1; margin-bottom: 20px; color: #ffffff; font-weight: 600; }
+        .story-card h3 { font-size: 25px; letter-spacing: 1px; opacity: 1; margin-bottom: 8px; color: #ffffff; font-weight: 400; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .story-card .subtitle { font-size: 15px; letter-spacing: 0.5px; margin-bottom: 20px; color: #ffffff; font-weight: 400; opacity: 0.95; text-shadow: 0 2px 6px rgba(0,0,0,0.25); white-space: nowrap; }
+        .story-card p:not(.subtitle) { font-size: 14px; line-height: 1.6; color: #ffffff; font-weight: 400; opacity: 0.95; text-shadow: 0 1px 4px rgba(0,0,0,0.2); }
         .story-card .reserve-btn { margin-top: 20px; align-self: flex-start; background-color: var(--main-purple); color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: 600; box-shadow: 0 0 20px rgba(106, 90, 205, 0.5); z-index: 1; position: relative; }
         .single-image-wrapper { position: sticky; top: 120px; }
         .single-image { border-radius: 30px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); transition: transform 0.5s ease; }
@@ -272,10 +371,15 @@
         .card-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
         .card-item h3 { font-size: 24px; font-weight: 700; color: var(--main-purple); margin-bottom: 20px; }
         .card-item p { font-size: 18px; line-height: 1.8; color: #555; }
-        .business-area-section { text-align: center; }
-        .business-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 60px; }
+        .business-area-section { text-align: center; padding: 80px 40px !important; position: relative; }
+        .business-area-section .container { position: relative; z-index: 1; }
+        #business-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+        .business-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; }
         .business-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); width: 350px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
         .business-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .business-card.clickable-card { cursor: pointer; }
+        .business-card.clickable-card::after { content: '상세보기'; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--main-purple); color: #fff; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; opacity: 0; transition: opacity 0.3s ease; }
+        .business-card.clickable-card:hover::after { opacity: 1; }
         .business-card img { width: 100%; height: 220px; object-fit: cover; }
         .business-card-content { padding: 30px; }
         .business-card .card-title {
@@ -293,7 +397,7 @@
             white-space: nowrap;
         }
         .business-card-content h3 { font-size: 22px; margin-bottom: 15px; display: none; }
-        .business-card p { font-size: 16px; line-height: 1.7; color: #666; }
+        .business-card p { font-size: 14px; line-height: 1.8; color: #666; text-align: center; }
         .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; }
         .term-card { background-color: var(--light-gray); border-radius: 20px; padding: 40px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .term-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(106, 90, 205, 0.2); }
@@ -423,17 +527,104 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
+        /* --- 팝업 스타일 --- */
+        .intro-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+        }
+        .intro-popup.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .popup-content {
+            position: relative;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: popupFadeIn 0.3s ease;
+        }
+        @keyframes popupFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .popup-content img {
+            width: 100%;
+            display: block;
+        }
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 1;
+        }
+        .popup-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .popup-buttons {
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+        .popup-buttons button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .popup-buttons button:first-child {
+            border-right: 1px solid #eee;
+            color: #888;
+        }
+        .popup-buttons button:last-child {
+            color: var(--main-purple);
+            font-weight: 600;
+        }
+        .popup-buttons button:hover {
+            background: #f5f5f5;
+        }
+
         /* --- 푸터 스타일 --- */
-        .main-footer { background-color: #2c2c2c; color: #f0f0f0; padding: 80px 40px; }
+        .main-footer { background-color: #B4D8FF; color: #222; padding: 80px 40px; }
         .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .footer-logo img { height: 40px; margin-bottom: 20px; }
-        .footer-about p { line-height: 1.7; color: #f0f0f0; }
-        .footer-links h3, .footer-contact h3 { color: #ffffff; font-size: 20px; margin-bottom: 20px; }
+        .footer-about { display: flex; align-items: center; justify-content: flex-start; }
+        .footer-logo img { height: 140px; margin-bottom: 0; width: auto; max-width: 100%; }
+        .footer-links h3, .footer-contact h3 { color: #222; font-size: 20px; margin-bottom: 20px; }
         .footer-links ul li { margin-bottom: 10px; }
-        .footer-links ul li a { color: #f0f0f0; transition: color 0.3s ease; }
+        .footer-links ul li a { color: #222; transition: color 0.3s ease; }
         .footer-links ul li a:hover { color: var(--main-purple); }
-        .footer-contact p { margin-bottom: 10px; color: #f0f0f0; }
-        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #555; color: #f0f0f0; }
+        .footer-contact p { margin-bottom: 10px; color: #222; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(34, 34, 34, 0.2); color: #222; }
 
 
         /* ================= 반응형 디자인 ================= */
@@ -452,17 +643,22 @@
 
         @media (max-width: 768px) {
             /* 헤더 & 네비게이션 모바일 최적화 */
-            .logo img { height: 32px; }
+            .logo img { height: 42px; width: auto; min-width: 95px; }
             .main-header { 
                 position: fixed; 
                 top: 0; 
                 left: 0; 
                 width: 100%; 
-                background-color: #fff !important; 
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important; 
-                border-bottom: none !important; 
+                background: rgba(0, 0, 0, 0.4) !important;
+                backdrop-filter: blur(10px) !important;
+                -webkit-backdrop-filter: blur(10px) !important;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important; 
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; 
             }
-            .header-container { height: 70px; padding: 0 20px; }
+            .main-header.scrolled {
+                background: rgba(255, 255, 255, 0.95) !important;
+            }
+            .header-container { height: 60px; padding: 0 20px; }
             
             .nav-area { gap: 0; }
 
@@ -473,8 +669,10 @@
                 width: 100%;
                 height: auto;
                 max-height: 65vh;
-                background-color: #fff;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                box-shadow: 0 8px 32px rgba(0,0,0,0.2);
                 transform: translateY(-100%);
                 transition: transform 0.4s ease;
                 padding: 20px 30px 30px;
@@ -496,7 +694,9 @@
             }
             
             .main-nav-logo img {
-                height: 32px;
+                height: 42px;
+                width: auto;
+                min-width: 95px;
             }
 
             .main-nav-list {
@@ -507,12 +707,18 @@
 
             .main-nav-list a {
                 color: #222 !important;
-                padding: 14px 0;
+                padding: 16px 0;
                 width: 100%;
                 text-align: left;
                 font-size: 17px;
-                font-weight: 500;
+                font-weight: 600;
+                letter-spacing: 0.3px;
                 border-bottom: 1px solid #f0f0f0;
+                text-shadow: none !important;
+            }
+            .main-nav-list a:hover {
+                color: var(--main-purple) !important;
+                padding-left: 10px;
             }
 
             .nav-area > .login-btn {
@@ -523,12 +729,19 @@
                 display: block;
                 text-align: center;
                 padding: 14px;
-                background-color: var(--main-purple);
+                background: linear-gradient(135deg, var(--main-purple), #8367d2);
                 color: #fff;
                 border-radius: 50px;
                 font-weight: 600;
+                letter-spacing: 0.5px;
                 margin-top: 20px;
                 font-size: 16px;
+                box-shadow: 0 4px 12px rgba(106, 90, 205, 0.4);
+                transition: all 0.3s ease;
+            }
+            .main-nav .start-btn-mobile:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(106, 90, 205, 0.6);
             }
             
             .hamburger-btn { 
@@ -542,7 +755,7 @@
                 border: none; 
                 z-index: 1002; 
                 position: absolute; 
-                top: 24px; 
+                top: 19px; 
                 right: 20px; 
             }
             .header-container { position: relative; }
@@ -551,7 +764,12 @@
                 height: 3px; 
                 border-radius: 2px; 
                 transition: all 0.3s ease; 
+                background-color: #fff;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .main-header.scrolled .hamburger-btn span {
                 background-color: #222;
+                box-shadow: none;
             }
             .hamburger-btn.is-active span { background-color: #222; }
             .hamburger-btn.is-active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
@@ -562,11 +780,14 @@
             .hero-section { 
                 height: 50vh; 
                 min-height: 400px;
-                background-position: center center;
+                background-position: 75% center !important;
+                background-size: cover !important;
+                background-attachment: scroll;
             }
             .hero-logo img { max-width: 240px; }
+            .hero-logo { display: none; }
             .hero-section .start-btn { 
-                display: inline-block; 
+                display: none; 
                 padding: 12px 32px;
                 font-size: 16px;
                 margin-top: 20px;
@@ -620,7 +841,10 @@
             
             /* 5대 문화 모바일 최적화 */
             .culture-section { 
-                padding: 60px 20px;
+                padding: 50px 20px !important;
+            }
+            .business-area-section {
+                padding: 50px 20px !important;
             }
             .culture-title { font-size: 32px; }
             .culture-subtitle { font-size: 15px; margin-top: 8px; }
@@ -764,9 +988,16 @@
             .story-card { 
                 min-height: 420px; 
                 padding: 32px 24px;
+                box-shadow: 0 12px 24px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.06);
+                border-radius: 20px;
             }
-            .story-card h3 { font-size: 20px; letter-spacing: 1.5px; margin-bottom: 16px; }
-            .story-card p { font-size: 15px; line-height: 1.6; }
+            .story-card:hover {
+                transform: translateY(-4px) scale(1.01);
+                box-shadow: 0 16px 32px rgba(0,0,0,0.12), 0 6px 12px rgba(0,0,0,0.08);
+            }
+            .story-card h3 { font-size: 22px; letter-spacing: 1px; margin-bottom: 6px; font-weight: 400; }
+            .story-card .subtitle { font-size: 16px; letter-spacing: 0.5px; margin-bottom: 16px; font-weight: 400; }
+            .story-card p:not(.subtitle) { font-size: 12px; line-height: 1.6; }
             .story-card .reserve-btn { 
                 width: 100%;
                 padding: 14px 24px; 
@@ -812,7 +1043,9 @@
                 flex-direction: column; 
                 align-items: center;
                 gap: 24px;
+                margin-top: 30px;
             }
+            .culture-title-wrapper { margin-bottom: 30px; }
             .business-card { 
                 width: 100%; 
                 max-width: 380px;
@@ -833,8 +1066,9 @@
                 gap: 32px; 
                 text-align: center; 
             }
-            .footer-logo img { height: 36px; margin: 0 auto 16px; }
-            .footer-about p, .footer-links ul li a, .footer-contact p { font-size: 14px; line-height: 1.7; }
+            .footer-about { display: flex; align-items: center; justify-content: center; }
+            .footer-logo img { height: 120px; margin: 0 auto; width: auto; max-width: 100%; }
+            .footer-links ul li a, .footer-contact p { font-size: 14px; line-height: 1.7; }
             .footer-links h3, .footer-contact h3 { font-size: 18px; margin-bottom: 16px; }
             .footer-links ul li { margin-bottom: 8px; }
             .footer-bottom { margin-top: 40px; padding-top: 24px; font-size: 13px; }
@@ -965,24 +1199,23 @@
             </div>
         </section>
         
-        <section id="philosophy" class="section story-section">
-            <canvas class="bg-canvas" id="bg-canvas-3"></canvas>
+        <section id="philosophy" class="section story-section" style="background-color: #fff;">
             <div class="container">
-                <div class="section-title animate-on-scroll from-bottom"><h2>브랜드 스토리</h2><p>면역, 건강의 미, 라이프스타일</p></div>
+                <div class="section-title animate-on-scroll from-bottom"><h2 style="color: #222;">브랜드 스토리</h2></div>
                 <div class="story-cards-wrapper animate-on-scroll">
                     <div class="story-card" style="--delay: 0s;">
                         <img src="./images/story_1.png" class="bg-image" alt="DNA 배경">
-                        <div class="story-card-content"><h3>CANF</h3><p>CANF는 첨단 피부과학과 유효 성분 조합으로 피부 본연의 탄력과 결을 되찾는 솔루션을 만듭니다</p></div>
+                        <div class="story-card-content"><h3>CANF</h3><p class="subtitle">CREATE A NEW FACE</p><p>CANF는 첨단 피부과학과 유효 성분 조합으로<br>피부 본연의 탄력과 결을 되찾는 솔루션을 만듭니다.</p></div>
                         <a href="#" class="reserve-btn" data-detail="1">DETAIL</a>
                     </div>
                     <div class="story-card" style="--delay: 0.2s;">
                         <img src="./images/story_2.png" class="bg-image" alt="시스템 배경">
-                        <div class="story-card-content"><h3>AMARTE ULTRA VEIL</h3><p>피부진정성분 특허를 받은 MultiEx BSASM와 식물성 추출물 함유로 자외선으로 인해 지치고 민감해진 피부에윤기를 부여합니다다</p></div>
+                        <div class="story-card-content"><h3>선크림</h3><p class="subtitle">AMARTE ULTRA VEIL SUNSCREEN</p><p>피부진정성분 특허를 받은 MultiEx BSASM와<br>식물성 추출물 함유로 자외선으로 인해<br>지치고 민감해진 피부에 윤기를 부여합니다.</p></div>
                         <a href="#" class="reserve-btn" data-detail="2">DETAIL</a>
                     </div>
                     <div class="story-card" style="--delay: 0.4s;">
                         <img src="./images/story_3.png" class="bg-image" alt="인물 배경">
-                        <div class="story-card-content"><h3>SILKTOX</h3><p>은행 열매를 20여년 동안 발효한 천연 원료'은행 추출물'</p></div>
+                        <div class="story-card-content"><h3>실크톡스</h3><p class="subtitle">SILKTOX</p><p>20여년 동안 발효한 천연 원료 '은행 추출물'<br>민감성 피부를 위해 자연이 키운 천연 유래 화장품</p></div>
                         <a href="#" class="reserve-btn" data-detail="3">DETAIL</a>
                     </div>
                 </div>
@@ -990,7 +1223,7 @@
         </section>
         
         <section id="culture" class="section section-dark culture-section">
-            <canvas id="stardust-bg"></canvas>
+            <canvas class="bg-canvas" id="stardust-bg"></canvas>
             <div class="container">
                 <div class="culture-title-wrapper animate-on-scroll from-bottom">
                     <h2 class="culture-title" data-text="5대 문화">5대 문화</h2>
@@ -1064,6 +1297,40 @@
                 </div>
             </div>
         </section>
+        
+        <section id="business" class="section business-area-section section-dark">
+            <canvas class="bg-canvas" id="business-particles"></canvas>
+            <div class="container">
+                <div class="section-title animate-on-scroll from-bottom">
+                    <h2>BUSINESS AREA</h2>
+                    <p>더 케이 아시아나의 혁신적인 사업 영역</p>
+                </div>
+                <div class="business-cards">
+                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0s;">
+                        <span class="card-title">뷰티</span>
+                        <img src="./images/business-1.png" alt="뷰티 사업">
+                        <div class="business-card-content">
+                            <p>피부 본연의 아름다움을 깨우는 뷰티 제품을 통해<br>일상 속에서 경험하는 건강하고<br>지속 가능한 아름다움을 제안합니다.</p>
+                        </div>
+                    </div>
+                    <div class="business-card animate-on-scroll from-bottom clickable-card" style="--delay: 0.2s;" data-detail-image="./images/life_detail.jpg">
+                        <span class="card-title">라이프스타일</span>
+                        <img src="./images/business-2.png" alt="라이프스타일 사업">
+                        <div class="business-card-content">
+                            <p>고객의 삶의 질을 높이는<br>혁신적인 생활용품과 서비스를 제공하여<br>일상에 새로운 가치와 편리함을 더합니다.</p>
+                        </div>
+                    </div>
+                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0.4s;">
+                        <span class="card-title">건강식품</span>
+                        <img src="./images/business-3.png" alt="건강식품 사업">
+                        <div class="business-card-content">
+                            <p>신뢰할 수 있는 원료와 과학적 기준으로 설계된<br>건강식품을 통해 일상의 건강을 근본부터 관리하는<br>솔루션을 제안합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <!-- Part 1 Content End -->
 
         <!-- Part 2 Content Start -->
@@ -1071,8 +1338,8 @@
             <canvas class="bg-canvas" id="bg-canvas-1"></canvas>
             <div class="container">
                 <div class="content-text animate-on-scroll from-left">
-                    <h2 style="font-size: 36px; color: #222;">유통의 혁명 - <span class="accent">플랫폼 시대</span></h2>
-                    <p>더 케이 아시아나는 전세계유통혁명의 돈키호테가 되고자 한다.<br>새로운 변화 일으키며 그 변화 속에 다양한 콘텐츠와 트렌드를 만들어 가는데<br>작은 초점과 시발점이 되어서 차별화, 다양성들을 극대화 시키는데 작은 힘이 되는 더 케이 아시아나가 되고자 한다.</p>
+                    <h2 style="font-size: 32px; color: #222;">전 세계 유통 혁명의<br><span class="accent">㈜더케이아시아나</span></h2>
+                    <p>우리는 늘 새로운 변화를 일으키며,<br>변화 속에 다양한 콘텐츠와 트랜드를 만들어가는<br>작은 초점이자 시발점이 되고자 합니다</p>
                 </div>
                 <div class="image-group animate-on-scroll from-right">
                     <div class="graphic-container">
@@ -1098,7 +1365,7 @@
             <canvas class="bg-canvas" id="bg-canvas-4"></canvas>
             <div class="container">
                 <div class="content-text animate-on-scroll from-left">
-                    <h2>정직한 회사</h2><p class="sub-heading">정직&원칙&문화</p><p><주>더 케이 아시아나는 정직한 회사를 지향하고 있습니다. 화려하고 규모만 큰 회사보다는 내실 있는 회사가 되어야 합니다. 이는 더 케이 아시아나의 창업이념 중의 하나인 "정직"을 위한 경영방침이기도 합니다.</p><p>이를 위해서는 낭비되는 요소를 제거하고 섬세한 경영 관리가 필요합니다. 정직한 회사란 직원들의 행복이 크고 고객의 성공이 크고 사회의 발전에 크게 이바지하는 "글로벌"회사입니다.</p>
+                    <h2>정직한 회사</h2><p class="sub-heading">정직&원칙&문화</p><p>정직한 회사가 되겠다는 약속, 그것이 우리의 첫번째 가치입니다.<br>화려함보다 내실 있는 회사<br>보이지 않는 곳에서도 바른 기준을 지킵니다.<br>정직함은 우리의 창업 이념이자 변하지 않는 원칙입니다.</p>
                 </div>
                 <div class="single-image-wrapper animate-on-scroll from-right"><div class="single-image"><img src="./images/vision_1.png" alt="비전"></div></div>
             </div>
@@ -1109,7 +1376,7 @@
             <div class="container">
                 <div class="single-image-wrapper animate-on-scroll from-left layout-image-first"><div class="single-image"><img src="./images/sharing_1.png" alt="나눔의 문화"></div></div>
                 <div class="content-text animate-on-scroll from-right">
-                    <h2>나눔의 문화</h2><p class="sub-heading">나눔&기쁨&공유</p><p>나눔의 기쁨을 누리기로 결심하다<br>관계형성의 7대원칙을 중심으로 나눔은 더 케이 아시아나부터 실천하는 회사이다.</p>
+                    <h2>나눔의 문화</h2><p class="sub-heading">나눔&기쁨&공유</p><p>정직한 행동에서 신뢰가 생기고<br>신뢰가 모이면 나눔의 문화가 자라납니다.<br>우리는 함께 돕고, 함께 배우고, 함께 성장합니다.<br>작은 나눔이 큰 변화를 만든다는 믿음으로<br>더 좋은 내일을 함께 만들어갑니다.</p>
                 </div>
             </div>
         </section>
@@ -1132,39 +1399,6 @@
 
 
 
-        <section id="business" class="section business-area-section section-dark">
-            <div class="container">
-                <div class="section-title animate-on-scroll from-bottom">
-                    <h2>BUSINESS AREA</h2>
-                    <p>더 케이 아시아나의 혁신적인 사업 영역</p>
-                </div>
-                <div class="business-cards">
-                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0s;">
-                        <span class="card-title">헬스 & 뷰티</span>
-                        <img src="./images/business-1.png" alt="헬스 & 뷰티 사업">
-                        <div class="business-card-content">
-                            <p>최첨단 바이오 기술을 바탕으로 한 건강기능식품과 코스메틱 제품을 통해 내면과 외면의 아름다움을 동시에 추구합니다.</p>
-                        </div>
-                    </div>
-                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0.2s;">
-                        <span class="card-title">라이프스타일</span>
-                        <img src="./images/business-2.png" alt="라이프스타일 사업">
-                        <div class="business-card-content">
-                            <p>고객의 삶의 질을 높이는 혁신적인 생활용품과 서비스를 제공하여 일상에 새로운 가치와 편리함을 더합니다.</p>
-                        </div>
-                    </div>
-                    <div class="business-card animate-on-scroll from-bottom" style="--delay: 0.4s;">
-                        <span class="card-title">플랫폼</span>
-                        <img src="./images/business-3.png" alt="플랫폼 사업">
-                        <div class="business-card-content">
-                            <p>전 세계 소비자와 생산자를 잇는 유통 플랫폼을 통해 국경 없는 비즈니스 기회를 창출하고 새로운 시장을 개척합니다.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
         <!-- ========== Part 4 Content End ========== -->
     </main>
     
@@ -1176,11 +1410,23 @@
         </div>
     </div>
     
+    <!-- 팝업 구조 -->
+    <div id="intro-popup" class="intro-popup">
+        <div class="popup-overlay"></div>
+        <div class="popup-content">
+            <button class="popup-close">&times;</button>
+            <img src="./images/popup.png" alt="팝업 이미지">
+            <div class="popup-buttons">
+                <button class="popup-today-close">오늘 하루 보지 않기</button>
+                <button class="popup-close-btn">닫기</button>
+            </div>
+        </div>
+    </div>
+    
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-about">
                 <a href="/" class="footer-logo"><img src="./images/logo.png" alt="THE K ASIANA 로고"></a>
-                <p>더 케이 아시아나는 고객의 성공을 최우선으로 생각하며, 정직과 나눔의 가치를 실현하는 초일류 기업으로 나아갑니다.</p>
             </div>
             <div class="footer-links">
                 <h3>바로가기</h3>
@@ -1316,15 +1562,17 @@
         document.querySelectorAll('.image-group').forEach(group => new TiltEffect(group));
 
         const backgroundEffects = {
-            'bg-canvas-1':(ctx,w,h,m,t)=>{ctx.fillStyle='rgba(255,255,255,0.03)';ctx.fillRect(0,0,w,h);ctx.fillStyle=`rgba(106,90,205,0.08)`;ctx.font='15px monospace';const cols=backgroundEffects.c1=backgroundEffects.c1||Array(Math.floor(w/20)).fill(1);cols.forEach((y,i)=>{ctx.fillText(String.fromCharCode(Math.random()*128),i*20,y);cols[i]=y>100+Math.random()*1e4?0:y+20})},
+            'bg-canvas-1':(ctx,w,h,m,t)=>{ctx.clearRect(0,0,w,h);const waves=backgroundEffects.w1=backgroundEffects.w1||[];if(waves.length===0){for(let i=0;i<3;i++)waves.push({y:h*0.3+i*h*0.2,amp:30+i*10,freq:0.003-i*0.0005,speed:0.02+i*0.005,phase:i*Math.PI/3,color:`rgba(106,90,205,${0.03+i*0.01})`})}waves.forEach(wave=>{wave.phase+=wave.speed;ctx.beginPath();ctx.moveTo(0,h);for(let x=0;x<=w;x+=5){const y=wave.y+Math.sin(x*wave.freq+wave.phase)*wave.amp+Math.sin(x*wave.freq*2+wave.phase*1.5)*wave.amp*0.5;ctx.lineTo(x,y)}ctx.lineTo(w,h);ctx.lineTo(0,h);ctx.fillStyle=wave.color;ctx.fill()});const dots=backgroundEffects.d1=backgroundEffects.d1||Array.from({length:30},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*3+1,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,o:Math.random()*0.15+0.05}));dots.forEach(d=>{d.x+=d.vx;d.y+=d.vy;if(d.x<0||d.x>w)d.vx*=-1;if(d.y<0||d.y>h)d.vy*=-1;ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);ctx.fillStyle=`rgba(106,90,205,${d.o})`;ctx.fill()});ctx.lineWidth=0.3;for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){const dist=Math.hypot(dots[i].x-dots[j].x,dots[i].y-dots[j].y);if(dist<120){ctx.beginPath();ctx.moveTo(dots[i].x,dots[i].y);ctx.lineTo(dots[j].x,dots[j].y);ctx.strokeStyle=`rgba(106,90,205,${(120-dist)/600})`;ctx.stroke()}}},
             'bg-canvas-2':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c2=backgroundEffects.c2||Array.from({length:80},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2,o:Math.random()*0.5}));p.forEach(e=>{ctx.beginPath();ctx.arc(e.x,e.y,e.r,0,2*Math.PI);ctx.fillStyle=`rgba(106,90,205,${e.o})`;ctx.fill()});for(let i=0;i<p.length;i++)for(let j=i;j<p.length;j++)Math.hypot(p[i].x-p[j].x,p[i].y-p[j].y)<100&&(ctx.beginPath(),ctx.moveTo(p[i].x,p[i].y),ctx.lineTo(p[j].x,p[j].y),ctx.strokeStyle=`rgba(106,90,205,${(100-Math.hypot(p[i].x-p[j].x,p[i].y-p[j].y))/200})`,ctx.stroke())},
             'bg-canvas-3':(ctx,w,h,m,t)=>{const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,`hsl(${t/20%360}, 100%, 5%)`);g.addColorStop(1,`hsl(${(t/20+60)%360}, 100%, 5%)`);ctx.fillStyle=g;ctx.fillRect(0,0,w,h)},
             'bg-canvas-4':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c4=backgroundEffects.c4||Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,vx:Math.random()-0.5,vy:Math.random()-0.5}));p.forEach(e=>{e.x+=e.vx;e.y+=e.vy;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);ctx.beginPath();ctx.arc(e.x,e.y,2,0,2*Math.PI);ctx.fillStyle='rgba(170,170,170,0.3)';ctx.fill()})},
-            'bg-canvas-5':(ctx,w,h,m)=>{ctx.clearRect(0,0,w,h);for(let i=0;i<20;i++){ctx.beginPath();const g=ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,w/2);g.addColorStop(0,'rgba(255,223,186,0.04)');g.addColorStop(1,'rgba(255,223,186,0)');ctx.fillStyle=g;ctx.arc(m.x,m.y,w,(i/20)*2*Math.PI,((i+0.5)/20)*2*Math.PI);ctx.lineTo(m.x,m.y);ctx.fill()}},
+            'bg-canvas-5':(ctx,w,h,m,t)=>{ctx.clearRect(0,0,w,h);const hearts=backgroundEffects.h5=backgroundEffects.h5||Array.from({length:20},()=>({x:Math.random()*w,y:Math.random()*h,size:Math.random()*15+8,vy:-Math.random()*0.5-0.2,vx:(Math.random()-0.5)*0.3,o:Math.random()*0.15+0.05,rot:Math.random()*Math.PI*2}));hearts.forEach(h=>{h.y+=h.vy;h.x+=h.vx;h.rot+=0.01;if(h.y<-30){h.y=h+30;h.x=Math.random()*w}if(h.x<0||h.x>w)h.vx*=-1;ctx.save();ctx.translate(h.x,h.y);ctx.rotate(h.rot);ctx.beginPath();ctx.moveTo(0,-h.size*0.3);ctx.bezierCurveTo(h.size*0.5,-h.size,h.size*0.5,h.size*0.3,0,h.size*0.6);ctx.bezierCurveTo(-h.size*0.5,h.size*0.3,-h.size*0.5,-h.size,0,-h.size*0.3);ctx.fillStyle=`rgba(255,182,193,${h.o})`;ctx.fill();ctx.restore()});const bubbles=backgroundEffects.b5=backgroundEffects.b5||Array.from({length:25},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*4+2,vy:-Math.random()*0.4-0.1,o:Math.random()*0.2+0.05}));bubbles.forEach(b=>{b.y+=b.vy;b.x+=Math.sin(t*0.02+b.x*0.01)*0.3;if(b.y<-10){b.y=h+10;b.x=Math.random()*w}ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,223,186,${b.o})`;ctx.fill();ctx.beginPath();ctx.arc(b.x-b.r*0.3,b.y-b.r*0.3,b.r*0.3,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${b.o*0.5})`;ctx.fill()})},
             'bg-canvas-6':(ctx,w,h,m,t)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c6=backgroundEffects.c6||[];if(p.length<100&&Math.random()>0.9)p.push({x:Math.random()*w,y:Math.random()*h,w:0,h:0,life:100});ctx.strokeStyle='rgba(106,90,205,0.2)';p.forEach((r,i)=>{r.w+=2;r.h+=2;r.life--;if(r.life<=0)p.splice(i,1);ctx.strokeRect(r.x-r.w/2,r.y-r.h/2,r.w,r.h)})},
             'bg-canvas-7':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c7=backgroundEffects.c7||Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,vx:Math.random()-.5,vy:Math.random()-.5}));ctx.lineWidth=0.2;ctx.strokeStyle='rgba(106,90,205,0.8)';p.forEach(e=>{e.x+=e.vx;e.y+=e.vy;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);p.forEach(o=>{Math.hypot(e.x-o.x,e.y-o.y)<50&&(ctx.beginPath(),ctx.moveTo(e.x,e.y),ctx.lineTo(o.x,o.y),ctx.stroke())})})},
             'bg-canvas-8':(ctx,w,h,m,t)=>{ctx.fillStyle='rgba(0,0,0,0.04)';ctx.fillRect(0,0,w,h);const s=backgroundEffects.c8=backgroundEffects.c8||Array.from({length:200},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5}));ctx.fillStyle='rgba(255,255,255,0.6)';s.forEach(p=>{p.y-=0.1;p.y<0&&(p.y=h);ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,2*Math.PI);ctx.fill()})},
             'bg-canvas-9':(ctx,w,h)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.c9=backgroundEffects.c9||Array.from({length:100},()=>({x:Math.random()*w,y:Math.random()*h,vx:Math.random()-.5,vy:Math.random()-.5}));ctx.lineWidth=0.2;ctx.strokeStyle='rgba(106,90,205,0.8)';p.forEach(e=>{e.x+=e.vx;e.y+=e.vy;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);p.forEach(o=>{Math.hypot(e.x-o.x,e.y-o.y)<50&&(ctx.beginPath(),ctx.moveTo(e.x,e.y),ctx.lineTo(o.x,o.y),ctx.stroke())})})},
+            'business-particles':(ctx,w,h,m,t)=>{ctx.clearRect(0,0,w,h);const p=backgroundEffects.bp=backgroundEffects.bp||Array.from({length:50},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,o:Math.random()*0.3+0.1}));p.forEach(e=>{e.x+=e.vx;e.y+=e.vy;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);ctx.beginPath();ctx.arc(e.x,e.y,e.r,0,2*Math.PI);ctx.fillStyle=`rgba(180,216,255,${e.o})`;ctx.fill()});ctx.lineWidth=0.3;for(let i=0;i<p.length;i++)for(let j=i+1;j<p.length;j++){const d=Math.hypot(p[i].x-p[j].x,p[i].y-p[j].y);if(d<100){ctx.beginPath();ctx.moveTo(p[i].x,p[i].y);ctx.lineTo(p[j].x,p[j].y);ctx.strokeStyle=`rgba(180,216,255,${(100-d)/400})`;ctx.stroke()}}},
+            'stardust-bg':(ctx,w,h,m,t)=>{ctx.clearRect(0,0,w,h);const s=backgroundEffects.sd=backgroundEffects.sd||Array.from({length:80},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+0.5,vx:(Math.random()-0.5)*0.2,vy:(Math.random()-0.5)*0.2,o:Math.random()*0.5+0.2,pulse:Math.random()*Math.PI*2}));s.forEach(e=>{e.x+=e.vx;e.y+=e.vy;e.pulse+=0.02;(e.x>w||e.x<0)&&(e.vx*=-1);(e.y>h||e.y<0)&&(e.vy*=-1);const glow=Math.sin(e.pulse)*0.2+0.8;ctx.beginPath();ctx.arc(e.x,e.y,e.r*glow,0,2*Math.PI);ctx.fillStyle=`rgba(106,90,205,${e.o*glow})`;ctx.fill();ctx.beginPath();ctx.arc(e.x,e.y,e.r*glow*2,0,2*Math.PI);ctx.fillStyle=`rgba(106,90,205,${e.o*glow*0.3})`;ctx.fill()});ctx.lineWidth=0.2;for(let i=0;i<s.length;i++)for(let j=i+1;j<s.length;j++){const d=Math.hypot(s[i].x-s[j].x,s[i].y-s[j].y);if(d<80){ctx.beginPath();ctx.moveTo(s[i].x,s[i].y);ctx.lineTo(s[j].x,s[j].y);ctx.strokeStyle=`rgba(106,90,205,${(80-d)/300})`;ctx.stroke()}}},
         };
 
         function initCanvas(canvas) {
@@ -1374,6 +1622,19 @@
             });
         });
         
+        // 클릭 가능한 비즈니스 카드 이벤트
+        const clickableCards = document.querySelectorAll('.business-card.clickable-card');
+        clickableCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const imageSrc = card.getAttribute('data-detail-image');
+                if (imageSrc) {
+                    modalImage.src = imageSrc;
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
         // 모달 닫기 기능
         function closeModal() {
             modal.classList.remove('show');
@@ -1394,6 +1655,43 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('show')) {
                 closeModal();
+            }
+        });
+        
+        // --- 팝업 기능 ---
+        const introPopup = document.getElementById('intro-popup');
+        const popupOverlay = introPopup.querySelector('.popup-overlay');
+        const popupCloseBtn = introPopup.querySelector('.popup-close');
+        const popupCloseBtnBottom = introPopup.querySelector('.popup-close-btn');
+        const popupTodayClose = introPopup.querySelector('.popup-today-close');
+        
+        // 오늘 하루 보지 않기 체크
+        const today = new Date().toDateString();
+        const popupClosed = localStorage.getItem('popupClosedDate');
+        
+        if (popupClosed !== today) {
+            introPopup.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closePopup() {
+            introPopup.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function closeTodayPopup() {
+            localStorage.setItem('popupClosedDate', today);
+            closePopup();
+        }
+        
+        popupOverlay.addEventListener('click', closePopup);
+        popupCloseBtn.addEventListener('click', closePopup);
+        popupCloseBtnBottom.addEventListener('click', closePopup);
+        popupTodayClose.addEventListener('click', closeTodayPopup);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && introPopup.classList.contains('show')) {
+                closePopup();
             }
         });
     });
