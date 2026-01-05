@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>렌탈샵 - THE K ASIANA</title>
+    
+    <!-- SEO & SNS Meta Tags -->
+    <meta name="description" content="THE K ASIANA 렌탈샵 - 일라이트 보료 제품 렌탈">
+    <meta property="og:title" content="렌탈샵 - THE K ASIANA">
+    <meta property="og:description" content="일라이트 보료 제품 렌탈 서비스">
+    <meta property="og:image" content="https://thekasiana.com/images/og-image_1.png">
+    <meta property="og:url" content="https://thekasiana.com/rental.html">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon -->
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 기본 스타일 및 변수 --- */
+        :root { --main-purple: #6a5acd; --dark-blue: #0a1428; --light-gray: #f8f9fa; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Pretendard', 'Noto Sans KR', sans-serif; color: #333; background-color: #fff; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; position: relative; }
+        ul, li { list-style: none; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* --- 레이아웃 & 헬퍼 --- */
+        .section { width: 100%; position: relative; padding: 120px 40px; overflow: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+        .section-title { text-align: center; margin-bottom: 80px; }
+        .section-title h2 { font-size: 42px; font-weight: 700; color: #222; }
+
+        /* --- 애니메이션 --- */
+        .animate-on-scroll { opacity: 0; transition: opacity 1s ease-out, transform 1s ease-out; }
+        .from-left { transform: translateX(-50px); }
+        .from-right { transform: translateX(50px); }
+        .from-bottom { transform: translateY(50px); }
+        .is-visible { opacity: 1; transform: translate(0, 0) !important; }
+
+        /* --- 헤더 & 네비게이션 --- */
+        .main-header { 
+            width: 100%; 
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000; 
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .header-container { 
+            max-width: 1320px; 
+            margin: 0 auto; 
+            padding: 0 40px; 
+            height: 65px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo img { 
+            height: 50px; 
+            width: auto; 
+            min-width: 110px; 
+            display: block;
+        }
+        .nav-area { 
+            display: flex; 
+            align-items: center; 
+            gap: 40px; 
+        }
+        .main-nav-list { 
+            display: flex; 
+            gap: 45px; 
+        }
+        .main-nav-list a { 
+            display: block; 
+            font-size: 16px; 
+            font-weight: 600; 
+            letter-spacing: 0.3px;
+            color: #222; 
+            padding: 8px 0; 
+            position: relative; 
+            transition: all 0.3s ease;
+        }
+        .main-nav-list a::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--main-purple), #8367d2);
+            transition: width 0.3s ease;
+        }
+        .main-nav-list a:hover::after {
+            width: 100%;
+        }
+        .main-nav-list a:hover {
+            color: var(--main-purple);
+            transform: translateY(-2px);
+        }
+        .login-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border: 2px solid var(--main-purple);
+            border-radius: 50px;
+            color: #fff;
+            background: var(--main-purple);
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(106, 90, 205, 0.3);
+        }
+        .login-btn:hover { 
+            background: #5545b3;
+            border-color: #5545b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(106, 90, 205, 0.5);
+        }
+        .main-nav .start-btn-mobile { display: none; }
+        .main-nav-logo { display: none; }
+        .hamburger-btn { display: none; }
+
+        /* --- 렌탈샵 섹션 스타일 --- */
+        .rental-section { 
+            background-color: #fff; 
+            padding-top: 140px !important;
+            min-height: 100vh;
+        }
+        .rental-cards { display: flex; flex-direction: column; gap: 60px; margin-top: 60px; }
+        .rental-card { display: flex; align-items: center; gap: 40px; background: #fff; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .rental-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .rental-card-image { flex: 0 0 400px; height: 300px; border-radius: 16px; overflow: hidden; cursor: pointer; position: relative; }
+        .rental-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .rental-card-image:hover img { transform: scale(1.05); }
+        .rental-card-content { flex: 1; }
+        .rental-card-title { font-size: 32px; font-weight: 700; color: #222; margin-bottom: 20px; }
+        .rental-card-price { font-size: 24px; color: #666; margin-bottom: 30px; }
+        .rental-card-price strong { color: #222; }
+        .rental-btn { display: inline-block; padding: 14px 40px; background: linear-gradient(135deg, #6a5acd, #8367d2); color: #fff; border-radius: 50px; font-size: 16px; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(106, 90, 205, 0.3); }
+        .rental-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(106, 90, 205, 0.5); }
+
+        /* --- 모달 스타일 --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            width: 95%;
+            max-width: none;
+            height: 95vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        .modal-close {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            transition: color 0.3s ease;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            color: #ccc;
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        #modal-image {
+            max-width: 90vw;
+            max-height: none;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            margin: 40px 0;
+        }
+        
+        .modal.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 스크롤바 스타일링 */
+        .modal-content::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        .modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- 푸터 스타일 --- */
+        .main-footer { background-color: #B4D8FF; padding: 80px 40px 40px; color: #222; }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; margin-bottom: 40px; }
+        .footer-about { display: flex; align-items: center; justify-content: flex-start; }
+        .footer-logo img { height: 140px; margin-bottom: 0; max-width: 100%; }
+        .footer-links h3, .footer-contact h3 { font-size: 18px; margin-bottom: 20px; color: #222; }
+        .footer-links ul li { margin-bottom: 10px; }
+        .footer-links ul li a { color: #222; transition: color 0.3s ease; }
+        .footer-links ul li a:hover { color: var(--main-purple); }
+        .footer-contact p { margin-bottom: 8px; color: #222; }
+        .footer-bottom { border-top: 1px solid rgba(34, 34, 34, 0.2); padding-top: 30px; text-align: center; color: #222; }
+
+        /* --- 모바일 반응형 --- */
+        @media (max-width: 768px) {
+            .header-container { padding: 0 20px; height: 60px; }
+            .logo img { height: 42px; }
+            .nav-area { position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100vh; background-color: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 0; padding: 80px 30px 30px; transition: right 0.4s ease; box-shadow: -5px 0 20px rgba(0,0,0,0.1); z-index: 999; }
+            .main-nav { width: 100%; }
+            .main-nav.is-open { right: 0; }
+            .nav-area.is-open { right: 0; }
+            .main-header.is-open-nav .nav-area { right: 0; }
+            .main-nav-logo { display: block; text-align: center; margin-bottom: 30px; }
+            .main-nav-logo img { height: 50px; margin: 0 auto; }
+            .main-nav-list { flex-direction: column; gap: 0; width: 100%; }
+            .main-nav-list li { width: 100%; border-bottom: 1px solid rgba(0,0,0,0.05); }
+            .main-nav-list a { padding: 16px 0; font-size: 16px; color: #222; text-shadow: none; }
+            .main-nav-list a:hover { color: var(--main-purple); }
+            .login-btn { display: none !important; }
+            .main-nav .start-btn-mobile { display: block; margin-top: 20px; text-align: center; padding: 12px 0; background: var(--main-purple); color: #fff; border-radius: 8px; font-weight: 600; }
+            .hamburger-btn { display: flex; flex-direction: column; justify-content: space-between; width: 28px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; position: absolute; right: 20px; top: 19px; z-index: 1001; }
+            .hamburger-btn span { width: 100%; height: 3px; background-color: #222; border-radius: 2px; transition: all 0.3s ease; }
+            .hamburger-btn.is-active span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
+            .hamburger-btn.is-active span:nth-child(2) { opacity: 0; }
+            .hamburger-btn.is-active span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+
+            .section { padding: 80px 20px; }
+            .section-title h2 { font-size: 32px; }
+            .rental-section { padding-top: 100px !important; }
+            .rental-cards { gap: 40px; margin-top: 40px; }
+            .rental-card { flex-direction: column; gap: 24px; padding: 24px; }
+            .rental-card-image { flex: none; width: 100%; height: 250px; }
+            .rental-card-title { font-size: 24px; margin-bottom: 16px; }
+            .rental-card-price { font-size: 20px; margin-bottom: 24px; }
+            .rental-btn { width: 100%; padding: 16px; font-size: 15px; }
+
+            /* 모달 모바일 최적화 */
+            .modal-content { 
+                padding: 15px; 
+                width: 100%; 
+                height: 100vh;
+            }
+            .modal-close { 
+                top: 15px; 
+                right: 15px; 
+                font-size: 32px; 
+                width: 50px; 
+                height: 50px;
+            }
+            #modal-image { 
+                max-width: 95vw; 
+                margin: 30px 0;
+                border-radius: 8px;
+            }
+
+            .footer-container { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+            .footer-about { justify-content: center; }
+            .footer-logo img { height: 120px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="./index.html" class="logo"><img src="./images/logo.png" alt="THE K ASIANA 로고"></a>
+            <div class="nav-area">
+                <nav class="main-nav" id="main-nav">
+                    <div class="main-nav-logo">
+                        <img src="./images/logo.png" alt="THE K ASIANA 로고">
+                    </div>
+                    <ul class="main-nav-list">
+                        <li><a href="./rental.html">렌탈샵</a></li>
+                        <li><a href="./index.html#philosophy">브랜드스토리</a></li>
+                        <li><a href="./index.html#culture">5대문화</a></li>
+                        <li><a href="./index.html#knowhow">비지니스</a></li>
+                    </ul>
+                    <a href="https://www.sebasiplatform.kr/admin/login.asp" class="start-btn-mobile" target="_blank" rel="noopener noreferrer">로그인</a>
+                </nav>
+                <a href="https://www.sebasiplatform.kr/admin/login.asp" class="login-btn" target="_blank" rel="noopener noreferrer">로그인</a>
+                <button class="hamburger-btn" id="hamburger-btn" aria-label="메뉴 열기/닫기">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="section rental-section">
+            <div class="container">
+                <div class="section-title animate-on-scroll from-bottom">
+                    <h2>렌탈샵</h2>
+                </div>
+                <div class="rental-cards">
+                    <div class="rental-card animate-on-scroll from-left" style="--delay: 0s;">
+                        <div class="rental-card-image clickable-rental-image" data-detail-image="./images/rental/1-1.jpg">
+                            <img src="./images/rental/floor.jpg" alt="일라이트 보료 Floor">
+                        </div>
+                        <div class="rental-card-content">
+                            <h3 class="rental-card-title">일라이트 보료 Floor</h3>
+                            <p class="rental-card-price">가격 : <strong>3,495,600원</strong></p>
+                            <button class="rental-btn">렌탈하기</button>
+                        </div>
+                    </div>
+                    <div class="rental-card animate-on-scroll from-right" style="--delay: 0.2s;">
+                        <div class="rental-card-image clickable-rental-image" data-detail-image="./images/rental/2-1.jpg">
+                            <img src="./images/rental/stand.jpg" alt="일라이트 보료 Stand">
+                        </div>
+                        <div class="rental-card-content">
+                            <h3 class="rental-card-title">일라이트 보료 Stand</h3>
+                            <p class="rental-card-price">가격 : <strong>3,844,800원</strong></p>
+                            <button class="rental-btn">렌탈하기</button>
+                        </div>
+                    </div>
+                    <div class="rental-card animate-on-scroll from-left" style="--delay: 0.4s;">
+                        <div class="rental-card-image clickable-rental-image" data-detail-image="./images/rental/3-1.jpg">
+                            <img src="./images/rental/stand_cypress.jpg" alt="일라이트 보료 Stand 편백">
+                        </div>
+                        <div class="rental-card-content">
+                            <h3 class="rental-card-title">일라이트 보료 Stand 편백</h3>
+                            <p class="rental-card-price">가격 : <strong>4,194,000원</strong></p>
+                            <button class="rental-btn">렌탈하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- 모달 구조 -->
+    <div id="detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img id="modal-image" src="" alt="상세 이미지">
+        </div>
+    </div>
+    
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <a href="./index.html" class="footer-logo"><img src="./images/logo.png" alt="THE K ASIANA 로고"></a>
+            </div>
+            <div class="footer-links">
+                <h3>바로가기</h3>
+                <ul>
+                    <li><a href="./rental.html">렌탈샵</a></li>
+                    <li><a href="./index.html#philosophy">브랜드스토리</a></li>
+                    <li><a href="./index.html#culture">5대문화</a></li>
+                    <li><a href="./index.html#knowhow">비지니스</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>고객센터</h3>
+                <p><strong>이메일:</strong> s01072099939@gmail.com</p>
+                <p><strong>담당자:</strong> 010-6740-5600</p>
+                <p><strong>주소:</strong> 충남 아산시 탕정면 용두리 695-1번지 콜럼버스2차 903호</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 THE K ASIANA. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 모바일 네비게이션 ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mainNav = document.getElementById('main-nav');
+        const navLinks = mainNav.querySelectorAll('a');
+        const header = document.querySelector('.main-header'); 
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('is-open');
+            hamburgerBtn.classList.toggle('is-active', isOpen);
+            header.classList.toggle('is-open-nav', isOpen);
+        });
+
+        // 모바일 메뉴 링크 클릭 시 메뉴 닫기
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('is-active');
+                mainNav.classList.remove('is-open');
+                header.classList.remove('is-open-nav');
+            });
+        });
+
+        // --- 스크롤 옵저버 ---
+        const scrollObserver = new IntersectionObserver((entries, observer) => { 
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) { 
+                    entry.target.classList.add('is-visible'); 
+                    observer.unobserve(entry.target); 
+                } 
+            }); 
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+        
+        // --- 모달 기능 ---
+        const modal = document.getElementById('detail-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalClose = document.querySelector('.modal-close');
+        
+        // 렌탈 이미지 클릭 이벤트
+        const rentalImages = document.querySelectorAll('.rental-card-image.clickable-rental-image');
+        rentalImages.forEach(image => {
+            image.addEventListener('click', () => {
+                const imageSrc = image.getAttribute('data-detail-image');
+                if (imageSrc) {
+                    modalImage.src = imageSrc;
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // 모달 닫기 기능
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        modalClose.addEventListener('click', closeModal);
+        
+        // 배경 클릭
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // ESC 키 누르기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    });
+    </script>
+</body>
+</html>
+
